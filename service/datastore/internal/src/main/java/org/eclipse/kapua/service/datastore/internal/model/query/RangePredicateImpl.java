@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
@@ -17,15 +17,15 @@ import org.eclipse.kapua.service.datastore.model.query.StorableField;
 
 /**
  * Implementation of query predicate for matching range values
- *
+ * 
  * @since 1.0
  *
  */
 public class RangePredicateImpl implements RangePredicate {
 
     private StorableField field;
-    private Object minValue;
-    private Object maxValue;
+    private Object        minValue;
+    private Object        maxValue;
 
     private <V extends Comparable<V>> void checkRange(Class<V> clazz) throws KapuaException {
         if (minValue == null || maxValue == null) {
@@ -47,7 +47,7 @@ public class RangePredicateImpl implements RangePredicate {
 
     /**
      * Construct a range predicate given the field and the values
-     *
+     * 
      * @param field
      * @param minValue
      * @param maxValue

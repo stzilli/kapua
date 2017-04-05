@@ -9,26 +9,24 @@
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
-package org.eclipse.kapua.service.datastore.model.query;
+package org.eclipse.kapua.service.datastore.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.eclipse.kapua.service.datastore.DatastoreMessageXmlRegistry;
-import org.eclipse.kapua.service.datastore.model.DatastoreMessage;
+import org.eclipse.kapua.service.datastore.ChannelInfoXmlRegistry;
+import org.eclipse.kapua.service.datastore.model.query.StorableQuery;
 
 /**
- * Datastore message schema query definition
+ * Channel information schema query definition
  * 
  * @since 1.0
  *
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = DatastoreMessageXmlRegistry.class, factoryMethod = "newQuery")
-public interface MessageQuery extends StorableQuery<DatastoreMessage>
-{
-
+@XmlType(factoryClass = ChannelInfoXmlRegistry.class, factoryMethod = "newQuery")
+public interface ChannelInfoQuery extends StorableQuery<ChannelInfo> {
 }

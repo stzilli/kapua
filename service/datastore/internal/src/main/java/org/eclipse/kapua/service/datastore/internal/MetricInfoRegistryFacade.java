@@ -28,15 +28,15 @@ import org.eclipse.kapua.service.datastore.internal.elasticsearch.MetricInfoRegi
 import org.eclipse.kapua.service.datastore.internal.elasticsearch.MetricInfoXContentBuilder;
 import org.eclipse.kapua.service.datastore.internal.elasticsearch.dao.EsMetricInfoDAO;
 import org.eclipse.kapua.service.datastore.internal.model.MetricInfoListResultImpl;
+import org.eclipse.kapua.service.datastore.internal.model.MetricInfoQueryImpl;
 import org.eclipse.kapua.service.datastore.internal.model.StorableIdImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.AndPredicateImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.IdsPredicateImpl;
-import org.eclipse.kapua.service.datastore.internal.model.query.MetricInfoQueryImpl;
 import org.eclipse.kapua.service.datastore.model.MetricInfo;
 import org.eclipse.kapua.service.datastore.model.MetricInfoListResult;
+import org.eclipse.kapua.service.datastore.model.MetricInfoQuery;
 import org.eclipse.kapua.service.datastore.model.StorableId;
 import org.eclipse.kapua.service.datastore.model.query.AndPredicate;
-import org.eclipse.kapua.service.datastore.model.query.MetricInfoQuery;
 import org.elasticsearch.action.bulk.BulkItemResponse;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;

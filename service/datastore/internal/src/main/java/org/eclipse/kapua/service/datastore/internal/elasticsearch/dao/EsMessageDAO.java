@@ -25,10 +25,10 @@ import org.eclipse.kapua.service.datastore.internal.elasticsearch.MessageObjectB
 import org.eclipse.kapua.service.datastore.internal.elasticsearch.MessageQueryConverter;
 import org.eclipse.kapua.service.datastore.internal.elasticsearch.PredicateConverter;
 import org.eclipse.kapua.service.datastore.internal.model.MessageListResultImpl;
-import org.eclipse.kapua.service.datastore.internal.model.query.MessageQueryImpl;
+import org.eclipse.kapua.service.datastore.internal.model.MessageQueryImpl;
 import org.eclipse.kapua.service.datastore.model.DatastoreMessage;
 import org.eclipse.kapua.service.datastore.model.MessageListResult;
-import org.eclipse.kapua.service.datastore.model.query.MessageQuery;
+import org.eclipse.kapua.service.datastore.model.MessageQuery;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.update.UpdateRequest;

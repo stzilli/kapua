@@ -9,25 +9,25 @@
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
-package org.eclipse.kapua.service.datastore.model.query;
+package org.eclipse.kapua.service.datastore.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.eclipse.kapua.service.datastore.ClientInfoXmlRegistry;
-import org.eclipse.kapua.service.datastore.model.ClientInfo;
+import org.eclipse.kapua.service.datastore.MetricInfoXmlRegistry;
+import org.eclipse.kapua.service.datastore.model.query.StorableQuery;
 
 /**
- * Client information schema query definition
+ * Metric information schema query definition
  * 
  * @since 1.0
  *
  */
 @XmlRootElement(name = "query")
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(factoryClass = ClientInfoXmlRegistry.class, factoryMethod = "newQuery")
-public interface ClientInfoQuery extends StorableQuery<ClientInfo> {
+@XmlType(factoryClass = MetricInfoXmlRegistry.class, factoryMethod = "newQuery")
+public interface MetricInfoQuery extends StorableQuery<MetricInfo> {
 
 }

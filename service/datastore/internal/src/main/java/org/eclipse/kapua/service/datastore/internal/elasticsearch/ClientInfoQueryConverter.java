@@ -12,7 +12,7 @@
 package org.eclipse.kapua.service.datastore.internal.elasticsearch;
 
 import org.eclipse.kapua.service.datastore.model.ClientInfo;
-import org.eclipse.kapua.service.datastore.model.query.ClientInfoQuery;
+import org.eclipse.kapua.service.datastore.model.ClientInfoQuery;
 import org.eclipse.kapua.service.datastore.model.query.StorableFetchStyle;
 
 /**

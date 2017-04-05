@@ -28,15 +28,15 @@ import org.eclipse.kapua.service.datastore.internal.elasticsearch.EsSchema.Metad
 import org.eclipse.kapua.service.datastore.internal.elasticsearch.MessageStoreConfiguration;
 import org.eclipse.kapua.service.datastore.internal.elasticsearch.dao.EsClientInfoDAO;
 import org.eclipse.kapua.service.datastore.internal.model.ClientInfoListResultImpl;
+import org.eclipse.kapua.service.datastore.internal.model.ClientInfoQueryImpl;
 import org.eclipse.kapua.service.datastore.internal.model.StorableIdImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.AndPredicateImpl;
-import org.eclipse.kapua.service.datastore.internal.model.query.ClientInfoQueryImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.IdsPredicateImpl;
 import org.eclipse.kapua.service.datastore.model.ClientInfo;
 import org.eclipse.kapua.service.datastore.model.ClientInfoListResult;
+import org.eclipse.kapua.service.datastore.model.ClientInfoQuery;
 import org.eclipse.kapua.service.datastore.model.StorableId;
 import org.eclipse.kapua.service.datastore.model.query.AndPredicate;
-import org.eclipse.kapua.service.datastore.model.query.ClientInfoQuery;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.index.engine.DocumentAlreadyExistsException;
 import org.slf4j.Logger;

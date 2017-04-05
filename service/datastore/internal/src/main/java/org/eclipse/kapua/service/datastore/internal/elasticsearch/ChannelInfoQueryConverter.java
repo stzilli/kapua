@@ -12,7 +12,7 @@
 package org.eclipse.kapua.service.datastore.internal.elasticsearch;
 
 import org.eclipse.kapua.service.datastore.model.ChannelInfo;
-import org.eclipse.kapua.service.datastore.model.query.ChannelInfoQuery;
+import org.eclipse.kapua.service.datastore.model.ChannelInfoQuery;
 import org.eclipse.kapua.service.datastore.model.query.StorableFetchStyle;
 
 /**

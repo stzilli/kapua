@@ -3,7 +3,7 @@ package org.eclipse.kapua.service.datastore;
 import org.eclipse.kapua.model.KapuaObjectFactory;
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.service.datastore.model.MetricInfoListResult;
-import org.eclipse.kapua.service.datastore.model.query.MetricInfoQuery;
+import org.eclipse.kapua.service.datastore.model.MetricInfoQuery;
 
 /**
  * {@link MetricInfo} object factory

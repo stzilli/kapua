@@ -11,13 +11,20 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.datastore.model.query;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * Query predicate definition for matching field value
  * 
  * @since 1.0
  *
  */
-public interface TermPredicate extends StorablePredicate
+public interface TermPredicate<V> extends StorablePredicate
 {
 
     /**
@@ -25,20 +32,16 @@ public interface TermPredicate extends StorablePredicate
      * 
      * @return
      */
-    public StorableField getField();
+    public String getField();
+    
+    public void setField(String name);
 
     /**
      * Return the value
      * 
      * @return
      */
-    public Object getValue();
-
-    /**
-     * Return the value (typed)
-     * 
-     * @param clazz
-     * @return
-     */
-    public <V> V getValue(Class<V> clazz);
+    public V getValue();
+    
+    public void setValue(V value);
 }

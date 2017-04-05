@@ -5,7 +5,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ *  
  * Contributors:
  *     Eurotech - initial API and implementation
  *******************************************************************************/
@@ -17,28 +17,28 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * Query predicate definition for checking if a field exists
+ * Query predicate definition for matching the channel value
  * 
- * @since 1.0.0
+ * @since 1.0
+ *
  */
-public interface ExistsPredicate extends StorablePredicate
+public interface ChannelPredicate extends StorablePredicate
 {
-
     /**
-     * Gets the field name to check
+     * Get the channel expression (may use wildcard)
      * 
      * @return
      * 
      * @since 1.0.0
      */
-    public String getName();
+    public String getExpression();
     
     /**
-     * Sets the field name to check
+     * Set the channel expression (may use wildcard)
      * 
-     * @param name
+     * @param expression
      * 
      * @since 1.0.0
      */
-    public void setName(String name);
+    public void setExpression(String expression);
 }

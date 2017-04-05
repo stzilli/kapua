@@ -13,6 +13,7 @@ package org.eclipse.kapua.service.datastore.model.query;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;

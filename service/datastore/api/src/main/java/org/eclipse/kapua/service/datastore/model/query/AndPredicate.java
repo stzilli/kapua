@@ -13,6 +13,12 @@ package org.eclipse.kapua.service.datastore.model.query;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * Query "and" aggregation definition
  * 
@@ -23,13 +29,21 @@ public interface AndPredicate extends StorablePredicate
 {
 
     /**
-     * Get the {@link StorablePredicate} list
+     * Get the {@link List} of {@link StorablePredicate}s 
      * 
      * @return
      * 
      * @since 1.0.0
      */
     public List<StorablePredicate> getPredicates();
+    
+    /**
+     * Sets the {@link List} of {@link StorablePredicate}s
+     * @param predicates
+     * 
+     * @since 1.0.0
+     */
+    public void setPredicates(List<StorablePredicate> predicates);
     
  
     /**

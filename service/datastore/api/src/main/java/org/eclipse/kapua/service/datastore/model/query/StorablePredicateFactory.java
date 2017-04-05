@@ -27,7 +27,27 @@ public interface StorablePredicateFactory extends KapuaObjectFactory {
      * 
      * @since 1.0.0
      */
-    public <V> TermPredicate newTermPredicate(StorableField field, V value);
+    public <V> TermPredicate<V> newTermPredicate(String field, V value);
+
+    /**
+     * Returns a new {@link ChannelPredicate}.
+     * 
+     * @param expression
+     * @return
+     * 
+     * @since 1.0.0
+     */
+    public ChannelPredicate newChannelPredicate(String expression);
+    
+    /**
+     * Returns a new {@link ExistsPredicate}.
+     * 
+     * @param name
+     * @return
+     * 
+     * @since 1.0.0
+     */
+    public ExistsPredicate newExistsPredicate(String name);
 
     /**
      * Return a new {@link RangePredicate}.
@@ -39,6 +59,7 @@ public interface StorablePredicateFactory extends KapuaObjectFactory {
      * 
      * @since 1.0.0
      */
-    public <V extends Comparable<V>> RangePredicate<V> newRangePredicate(StorableField field, V minValue, V maxValue);
+    public <V extends Comparable<V>> RangePredicate<V> newRangePredicate(String field, V minValue, V maxValue);
+
 }
     

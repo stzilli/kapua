@@ -18,10 +18,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * Query predicate definition for matching the channel value
+ * {@link StorablePredicate} definition for matching a channel name.
+ * It supports using of wildcard as last channel level.
+ * E.g.:
+ * <ul>
+ * <li>test/channel/#</li>
+ * </ul>
  * 
- * @since 1.0
- *
+ * @since 1.0.0
  */
 @XmlRootElement(name = "channelPredicate")
 @XmlAccessorType(XmlAccessType.PROPERTY)
@@ -35,7 +39,7 @@ public interface ChannelPredicate extends StorablePredicate
     /**
      * Get the channel expression (may use wildcard)
      * 
-     * @return
+     * @return The channel expression to match.
      * 
      * @since 1.0.0
      */
@@ -45,7 +49,7 @@ public interface ChannelPredicate extends StorablePredicate
     /**
      * Set the channel expression (may use wildcard)
      * 
-     * @param expression
+     * @param expression The channel expression to match.
      * 
      * @since 1.0.0
      */

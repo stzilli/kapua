@@ -20,22 +20,24 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.eclipse.kapua.model.id.KapuaId;
 import org.eclipse.kapua.model.id.KapuaIdAdapter;
+import org.eclipse.kapua.service.datastore.model.ChannelInfo;
+import org.eclipse.kapua.service.datastore.model.DatastoreMessage;
 
 /**
- * Storable query definition.<br>
- * It defines the queries applicable to the persisted objects (such as messages, channeles information...)
+ * {@link StorableQuery} definition.<br>
+ * It defines the queries applicable to the persisted objects (such as {@link DatastoreMessage}s, {@link ChannelInfo}s )
  * 
  * @since 1.0.0
  *
  * @param <S>
- *            persisted object type (such as messages, channeles information...)
+ *            Persisted object type (such as {@link DatastoreMessage}s, {@link ChannelInfo}s )
  */
 public interface StorableQuery<S extends Object> {
 
     /**
      * Gets the scope id
      * 
-     * @return
+     * @return 
      * 
      * @since 1.0.0
      */

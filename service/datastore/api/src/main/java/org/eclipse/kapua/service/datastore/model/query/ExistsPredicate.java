@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * Query predicate definition for checking if a field exists
+ * {@link StorablePredicate} definition for checking if a field exists
  * 
  * @since 1.0.0
  */
@@ -33,9 +33,9 @@ public interface ExistsPredicate extends StorablePredicate
 {
 
     /**
-     * Gets the field name to check
+     * Gets the field name to check existence of.
      * 
-     * @return
+     * @return The field name to check existence of.
      * 
      * @since 1.0.0
      */
@@ -43,9 +43,9 @@ public interface ExistsPredicate extends StorablePredicate
     public String getName();
     
     /**
-     * Sets the field name to check
+     * Sets the field name to check existence of.
      * 
-     * @param name
+     * @param name The field name to check existence of.
      * 
      * @since 1.0.0
      */

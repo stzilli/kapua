@@ -18,10 +18,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * Query predicate for matching range values implementation
+ * {@link StorablePredicate} for matching values in a range.
  * 
- * @since 1.0
+ * @since 1.0.0
  *
+ *@param <V>
+ *      The type of the objetc to compare. It must extends {@link Comparable}.
  */
 @XmlRootElement(name = "rangePredicate")
 @XmlAccessorType(XmlAccessType.PROPERTY)
@@ -35,40 +37,47 @@ import javax.xml.bind.annotation.XmlType;
 public interface RangePredicate<V extends Comparable<V>> extends StorablePredicate
 {
     /**
-     * Get the field to be compared
+     * Gets the field name to be compared.
      * 
-     * @return
+     * @return The field name to be compared
+     * 
+     * @since 1.0.0
      */
     @XmlElement(name = "field")
     public String getField();
 
     /**
+     * Sets the field name to compare.
      * 
-     * @param storableField
+     * @param field The field name to compare.
+     * 
+     * @since 1.0.0
      */
-    public void setField(String storableField); 
+    public void setField(String field); 
     
     /**
-     * Return the minimum value
+     * Gets the minimum value for filtered results.
      * 
-     * @return
+     * @return The minimum value for filtered results.
+     * 
+     * @since 1.0.0
      */
     @XmlElement(name = "min")
     public V getMinValue();
 
     /**
-     * Sets the minimum value
+     * Sets the minimum value for filtered results.
      * 
-     * @param minValue The minimum value to set.
+     * @param minValue The minimum value to set for filtering results. 
      * 
      * @since 1.0.0
      */
     public void setMinValue(V minValue);
     
     /**
-     * Get the maximum value.
+     * Gets the maximum value for filtered results.
      * 
-     * @return The maximum value.
+     * @return The maximum value for filtered results.
      * 
      * @since 1.0.0
      */
@@ -76,9 +85,9 @@ public interface RangePredicate<V extends Comparable<V>> extends StorablePredica
     public V getMaxValue();
     
     /**
-     * Sets the maximum value.
+     * Sets the maximum value for filtered results.
      * 
-     * @param maxValue The max value to set.
+     * @param maxValue The max value to set for filtering results
      * 
      * @since 1.0.0
      */

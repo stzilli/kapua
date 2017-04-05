@@ -16,11 +16,12 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * Query "and" aggregation definition
+ * {@link StorablePredicate} to handle AND {@link StorablePredicate}s chaining.
  * 
  * @since 1.0.0
  */
@@ -35,18 +36,20 @@ public interface AndPredicate extends StorablePredicate
 {
 
     /**
-     * Get the {@link List} of {@link StorablePredicate}s 
+     * Get the {@link List} of {@link StorablePredicate}s in AND logic.
      * 
-     * @return
+     * @return The {@link List} of {@link StorablePredicate}s.
      * 
      * @since 1.0.0
      */
-    @XmlElement(name = "predicates")
+    @XmlElementWrapper(name = "predicates")
+    @XmlElement(name = "predicate")
     public List<StorablePredicate> getPredicates();
     
     /**
-     * Sets the {@link List} of {@link StorablePredicate}s
-     * @param predicates
+     * Sets the {@link List} of {@link StorablePredicate}s to chain in AND logic.
+     * 
+     * @param predicates The {@link List} of {@link StorablePredicate}s to chain
      * 
      * @since 1.0.0
      */
@@ -56,11 +59,11 @@ public interface AndPredicate extends StorablePredicate
     /**
      * Chains the given {@link StorablePredicate} to this {@link AndPredicate}
      * 
-     * @param The {@link StorablePredicate} to chain.
+     * @param predicate The {@link StorablePredicate} to chain.
      * 
      * @return This {@link AndPredicate} to continue chaining.
      * 
      * @since 1.0.0
      */
-    public AndPredicate and(StorablePredicate predicates);
+    public AndPredicate and(StorablePredicate predicate);
 }

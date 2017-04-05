@@ -19,12 +19,12 @@ import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * Query predicate definition for matching field value
+ * {@link StorablePredicate} definition for matching field value.
  * 
- * @since 1.0
- *
+ * @since 1.0.0
+ * 
+ * @param <V> The type of the value to match.
  */
-@XmlRootElement(name = "termPredicate")
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(propOrder = { //
         "field",
@@ -35,22 +35,40 @@ public interface TermPredicate<V> extends StorablePredicate
 {
 
     /**
-     * Return the field
+     * Gets the field name to match.
      * 
-     * @return
+     * @return The field name to match.
+     * 
+     * @since 1.0.0
      */
     @XmlElement(name = "field")
     public String getField();
     
+    /**
+     * Sets the field name to match.
+     * 
+     * @param name The field name to match.
+     * 
+     * @since 1.0.0
+     */
     public void setField(String name);
 
     /**
-     * Return the value
+     * Gets the value to match.
      * 
-     * @return
+     * @return The value to match
+     * 
+     * @since 1.0.0
      */
     @XmlElement(name = "value")
     public V getValue();
     
+    /**
+     * Sets the value to match.
+     * 
+     * @param value The value to match.
+     * 
+     * @since 1.0.0
+     */
     public void setValue(V value);
 }

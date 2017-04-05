@@ -24,6 +24,13 @@ import javax.xml.bind.annotation.XmlType;
  * @since 1.0
  *
  */
+@XmlRootElement(name = "termPredicate")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(propOrder = { //
+        "field",
+        "value"}, //
+    factoryClass = StorablePredicateXmlRegistry.class, //
+    factoryMethod = "newTermPredicate")
 public interface TermPredicate<V> extends StorablePredicate
 {
 
@@ -32,6 +39,7 @@ public interface TermPredicate<V> extends StorablePredicate
      * 
      * @return
      */
+    @XmlElement(name = "field")
     public String getField();
     
     public void setField(String name);
@@ -41,6 +49,7 @@ public interface TermPredicate<V> extends StorablePredicate
      * 
      * @return
      */
+    @XmlElement(name = "value")
     public V getValue();
     
     public void setValue(V value);

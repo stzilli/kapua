@@ -59,7 +59,7 @@ public interface StorableQuery<S extends Object> {
      * 
      * @since 1.0.0
      */
-    @XmlTransient
+    @XmlElement(name = "predicates")
     public StorablePredicate getPredicate();
 
     /**

@@ -23,8 +23,14 @@ import javax.xml.bind.annotation.XmlType;
  * Query "and" aggregation definition
  * 
  * @since 1.0.0
-
  */
+@XmlRootElement(name = "andPredicate")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(propOrder = { //
+        "predicates"//
+        }, //
+    factoryClass = StorablePredicateXmlRegistry.class, //
+    factoryMethod = "newAndPredicate")
 public interface AndPredicate extends StorablePredicate
 {
 
@@ -35,6 +41,7 @@ public interface AndPredicate extends StorablePredicate
      * 
      * @since 1.0.0
      */
+    @XmlElement(name = "predicates")
     public List<StorablePredicate> getPredicates();
     
     /**

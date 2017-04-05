@@ -23,6 +23,15 @@ import javax.xml.bind.annotation.XmlType;
  * @since 1.0
  *
  */
+@XmlRootElement(name = "rangePredicate")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(propOrder = { //
+        "field", //
+        "min", //
+        "max"
+        }, //
+    factoryClass = StorablePredicateXmlRegistry.class, //
+    factoryMethod = "newRangePredicate")
 public interface RangePredicate<V extends Comparable<V>> extends StorablePredicate
 {
     /**
@@ -30,6 +39,7 @@ public interface RangePredicate<V extends Comparable<V>> extends StorablePredica
      * 
      * @return
      */
+    @XmlElement(name = "field")
     public String getField();
 
     /**
@@ -43,6 +53,7 @@ public interface RangePredicate<V extends Comparable<V>> extends StorablePredica
      * 
      * @return
      */
+    @XmlElement(name = "min")
     public V getMinValue();
 
     /**
@@ -61,6 +72,7 @@ public interface RangePredicate<V extends Comparable<V>> extends StorablePredica
      * 
      * @since 1.0.0
      */
+    @XmlElement(name = "max")
     public V getMaxValue();
     
     /**

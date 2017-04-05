@@ -13,6 +13,7 @@ package org.eclipse.kapua.service.datastore.model.query;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -22,6 +23,13 @@ import javax.xml.bind.annotation.XmlType;
  * @since 1.0
  *
  */
+@XmlRootElement(name = "channelPredicate")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(propOrder = { //
+        "expression"//
+        }, //
+    factoryClass = StorablePredicateXmlRegistry.class, //
+    factoryMethod = "newChannelPredicate")
 public interface ChannelPredicate extends StorablePredicate
 {
     /**
@@ -31,6 +39,7 @@ public interface ChannelPredicate extends StorablePredicate
      * 
      * @since 1.0.0
      */
+    @XmlElement(name = "expression")
     public String getExpression();
     
     /**

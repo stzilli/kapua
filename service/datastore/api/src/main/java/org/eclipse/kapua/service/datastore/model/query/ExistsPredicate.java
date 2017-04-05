@@ -13,6 +13,7 @@ package org.eclipse.kapua.service.datastore.model.query;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -21,6 +22,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * @since 1.0.0
  */
+@XmlRootElement(name = "existsPredicate")
+@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(propOrder = { //
+        "name"//
+        }, //
+    factoryClass = StorablePredicateXmlRegistry.class, //
+    factoryMethod = "newExistsPredicate")
 public interface ExistsPredicate extends StorablePredicate
 {
 
@@ -31,6 +39,7 @@ public interface ExistsPredicate extends StorablePredicate
      * 
      * @since 1.0.0
      */
+    @XmlElement(name = "name")
     public String getName();
     
     /**

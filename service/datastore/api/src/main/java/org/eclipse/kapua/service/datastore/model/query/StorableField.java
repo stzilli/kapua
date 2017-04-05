@@ -11,24 +11,12 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.datastore.model.query;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 /**
  * Storable field definition
  * 
  * @since 1.0
  *
  */
-@XmlRootElement(name = "storableField")
-@XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(propOrder = { //
-        "field"
-        }, //
-    factoryClass = StorablePredicateXmlRegistry.class, //
-    factoryMethod = "newStorableField")
 public interface StorableField
 {
     /**

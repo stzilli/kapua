@@ -21,14 +21,4 @@ public class StorablePredicateXmlRegistry {
     public ExistsPredicate newExistsPredicate() {
         return factory.newExistsPredicate(null);
     }
-    
-    public StorableField newStorableField() {
-        return new StorableField() {
-            
-            @Override
-            public String field() {
-                return "asd";
-            }
-        };
-    }
 }

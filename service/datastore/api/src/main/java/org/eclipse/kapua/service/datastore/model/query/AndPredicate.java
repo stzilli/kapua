@@ -29,11 +29,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(propOrder = { //
         "predicates"//
-        }, //
-    factoryClass = StorablePredicateXmlRegistry.class, //
-    factoryMethod = "newAndPredicate")
-public interface AndPredicate extends StorablePredicate
-{
+}, //
+        factoryClass = StorablePredicateXmlRegistry.class, //
+        factoryMethod = "newAndPredicate")
+public interface AndPredicate extends StorablePredicate {
 
     /**
      * Get the {@link List} of {@link StorablePredicate}s in AND logic.
@@ -45,21 +44,22 @@ public interface AndPredicate extends StorablePredicate
     @XmlElementWrapper(name = "predicates")
     @XmlElement(name = "predicate")
     public List<StorablePredicate> getPredicates();
-    
+
     /**
      * Sets the {@link List} of {@link StorablePredicate}s to chain in AND logic.
      * 
-     * @param predicates The {@link List} of {@link StorablePredicate}s to chain
+     * @param predicates
+     *            The {@link List} of {@link StorablePredicate}s to chain
      * 
      * @since 1.0.0
      */
     public void setPredicates(List<StorablePredicate> predicates);
-    
- 
+
     /**
      * Chains the given {@link StorablePredicate} to this {@link AndPredicate}
      * 
-     * @param predicate The {@link StorablePredicate} to chain.
+     * @param predicate
+     *            The {@link StorablePredicate} to chain.
      * 
      * @return This {@link AndPredicate} to continue chaining.
      * 

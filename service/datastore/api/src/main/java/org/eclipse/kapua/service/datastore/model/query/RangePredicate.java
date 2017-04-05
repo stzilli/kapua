@@ -22,8 +22,8 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * @since 1.0.0
  *
- *@param <V>
- *      The type of the objetc to compare. It must extends {@link Comparable}.
+ * @param <V>
+ *            The type of the objetc to compare. It must extends {@link Comparable}.
  */
 @XmlRootElement(name = "rangePredicate")
 @XmlAccessorType(XmlAccessType.PROPERTY)
@@ -31,11 +31,11 @@ import javax.xml.bind.annotation.XmlType;
         "field", //
         "min", //
         "max"
-        }, //
-    factoryClass = StorablePredicateXmlRegistry.class, //
-    factoryMethod = "newRangePredicate")
-public interface RangePredicate<V extends Comparable<V>> extends StorablePredicate
-{
+}, //
+        factoryClass = StorablePredicateXmlRegistry.class, //
+        factoryMethod = "newRangePredicate")
+public interface RangePredicate<V extends Comparable<V>> extends StorablePredicate {
+
     /**
      * Gets the field name to be compared.
      * 
@@ -49,12 +49,13 @@ public interface RangePredicate<V extends Comparable<V>> extends StorablePredica
     /**
      * Sets the field name to compare.
      * 
-     * @param field The field name to compare.
+     * @param field
+     *            The field name to compare.
      * 
      * @since 1.0.0
      */
-    public void setField(String field); 
-    
+    public void setField(String field);
+
     /**
      * Gets the minimum value for filtered results.
      * 
@@ -68,12 +69,13 @@ public interface RangePredicate<V extends Comparable<V>> extends StorablePredica
     /**
      * Sets the minimum value for filtered results.
      * 
-     * @param minValue The minimum value to set for filtering results. 
+     * @param minValue
+     *            The minimum value to set for filtering results.
      * 
      * @since 1.0.0
      */
     public void setMinValue(V minValue);
-    
+
     /**
      * Gets the maximum value for filtered results.
      * 
@@ -83,11 +85,12 @@ public interface RangePredicate<V extends Comparable<V>> extends StorablePredica
      */
     @XmlElement(name = "max")
     public V getMaxValue();
-    
+
     /**
      * Sets the maximum value for filtered results.
      * 
-     * @param maxValue The max value to set for filtering results
+     * @param maxValue
+     *            The max value to set for filtering results
      * 
      * @since 1.0.0
      */

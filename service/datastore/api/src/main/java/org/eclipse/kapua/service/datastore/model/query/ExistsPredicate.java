@@ -26,11 +26,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(propOrder = { //
         "name"//
-        }, //
-    factoryClass = StorablePredicateXmlRegistry.class, //
-    factoryMethod = "newExistsPredicate")
-public interface ExistsPredicate extends StorablePredicate
-{
+}, //
+        factoryClass = StorablePredicateXmlRegistry.class, //
+        factoryMethod = "newExistsPredicate")
+public interface ExistsPredicate extends StorablePredicate {
 
     /**
      * Gets the field name to check existence of.
@@ -41,11 +40,12 @@ public interface ExistsPredicate extends StorablePredicate
      */
     @XmlElement(name = "name")
     public String getName();
-    
+
     /**
      * Sets the field name to check existence of.
      * 
-     * @param name The field name to check existence of.
+     * @param name
+     *            The field name to check existence of.
      * 
      * @since 1.0.0
      */

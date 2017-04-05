@@ -13,7 +13,6 @@ package org.eclipse.kapua.service.datastore.model.query;
 
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -37,7 +36,7 @@ public interface StorableQuery<S extends Object> {
     /**
      * Gets the scope id
      * 
-     * @return 
+     * @return
      * 
      * @since 1.0.0
      */

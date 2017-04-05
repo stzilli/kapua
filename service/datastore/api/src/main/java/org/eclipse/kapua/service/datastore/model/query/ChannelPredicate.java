@@ -31,11 +31,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(propOrder = { //
         "expression"//
-        }, //
-    factoryClass = StorablePredicateXmlRegistry.class, //
-    factoryMethod = "newChannelPredicate")
-public interface ChannelPredicate extends StorablePredicate
-{
+}, //
+        factoryClass = StorablePredicateXmlRegistry.class, //
+        factoryMethod = "newChannelPredicate")
+public interface ChannelPredicate extends StorablePredicate {
+
     /**
      * Get the channel expression (may use wildcard)
      * 
@@ -45,11 +45,12 @@ public interface ChannelPredicate extends StorablePredicate
      */
     @XmlElement(name = "expression")
     public String getExpression();
-    
+
     /**
      * Set the channel expression (may use wildcard)
      * 
-     * @param expression The channel expression to match.
+     * @param expression
+     *            The channel expression to match.
      * 
      * @since 1.0.0
      */

@@ -14,8 +14,6 @@ package org.eclipse.kapua.service.datastore.model.query;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -23,16 +21,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * @since 1.0.0
  * 
- * @param <V> The type of the value to match.
+ * @param <V>
+ *            The type of the value to match.
  */
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlType(propOrder = { //
-        "field",
-        "value"}, //
-    factoryClass = StorablePredicateXmlRegistry.class, //
-    factoryMethod = "newTermPredicate")
-public interface TermPredicate<V> extends StorablePredicate
-{
+        "field", //
+        "value" //
+}, //
+        factoryClass = StorablePredicateXmlRegistry.class, //
+        factoryMethod = "newTermPredicate")
+public interface TermPredicate<V> extends StorablePredicate {
 
     /**
      * Gets the field name to match.
@@ -43,11 +42,12 @@ public interface TermPredicate<V> extends StorablePredicate
      */
     @XmlElement(name = "field")
     public String getField();
-    
+
     /**
      * Sets the field name to match.
      * 
-     * @param name The field name to match.
+     * @param name
+     *            The field name to match.
      * 
      * @since 1.0.0
      */
@@ -62,11 +62,12 @@ public interface TermPredicate<V> extends StorablePredicate
      */
     @XmlElement(name = "value")
     public V getValue();
-    
+
     /**
      * Sets the value to match.
      * 
-     * @param value The value to match.
+     * @param value
+     *            The value to match.
      * 
      * @since 1.0.0
      */

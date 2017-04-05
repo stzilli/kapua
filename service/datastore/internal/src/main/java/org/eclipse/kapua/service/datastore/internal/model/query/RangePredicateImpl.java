@@ -62,7 +62,7 @@ public class RangePredicateImpl implements RangePredicate {
     public StorableField getField() {
         return field;
     }
-
+    
     /**
      * Get the field
      *

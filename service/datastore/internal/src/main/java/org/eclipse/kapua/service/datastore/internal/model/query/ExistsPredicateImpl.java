@@ -54,5 +54,10 @@ public class ExistsPredicateImpl implements ExistsPredicate
     {
         return name;
     }
+    
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }

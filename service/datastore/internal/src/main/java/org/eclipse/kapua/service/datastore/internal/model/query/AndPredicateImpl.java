@@ -35,22 +35,16 @@ public class AndPredicateImpl implements AndPredicate
     public AndPredicateImpl()
     {}
 
-    /**
-     * Creates an and predicate for the given predicates collection
-     * 
-     * @param predicates
-     * 
-     * @since 1.0.0
-     */
-    public AndPredicateImpl(Collection<StorablePredicate> predicates)
-    {
-        predicates.addAll(predicates);
-    }
-
     @Override
     public List<StorablePredicate> getPredicates()
     {
         return this.predicates;
+    }
+    
+    @Override
+    public void setPredicates(List<StorablePredicate> predicates)
+    {
+        this.predicates = predicates;
     }
 
     @Override

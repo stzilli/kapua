@@ -31,7 +31,7 @@ import org.eclipse.kapua.service.datastore.internal.model.ChannelInfoImpl;
 import org.eclipse.kapua.service.datastore.internal.model.ClientInfoImpl;
 import org.eclipse.kapua.service.datastore.internal.model.MetricInfoImpl;
 import org.eclipse.kapua.service.datastore.internal.model.StorableIdImpl;
-import org.eclipse.kapua.service.datastore.internal.model.query.ChannelMatchPredicateImpl;
+import org.eclipse.kapua.service.datastore.internal.model.query.ChannelPredicateImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.MessageQueryImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.MetricInfoQueryImpl;
 import org.eclipse.kapua.service.datastore.model.ChannelInfo;
@@ -221,7 +221,7 @@ public class DatastoreMediator implements MessageStoreMediator,
             EsConfigurationException,
             EsQueryConversionException,
             EsClientUnavailableException {
-        ChannelMatchPredicateImpl predicate = new ChannelMatchPredicateImpl(channelInfo.getName());
+        ChannelPredicateImpl predicate = new ChannelPredicateImpl(channelInfo.getName());
 
         MessageQueryImpl messageQuery = new MessageQueryImpl(channelInfo.getScopeId());
         messageQuery.setPredicate(predicate);

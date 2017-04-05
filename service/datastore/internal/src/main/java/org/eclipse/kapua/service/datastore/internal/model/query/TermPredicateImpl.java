@@ -20,10 +20,10 @@ import org.eclipse.kapua.service.datastore.model.query.TermPredicate;
  * @since 1.0
  *
  */
-public class TermPredicateImpl implements TermPredicate
+public class TermPredicateImpl<V> implements TermPredicate<V>
 {
-    private StorableField field;
-    private Object        value;
+    private String field;
+    private V        value;
 
     /**
      * Default constructor
@@ -37,50 +37,33 @@ public class TermPredicateImpl implements TermPredicate
      * @param field
      * @param value
      */
-    public <V> TermPredicateImpl(StorableField field, V value)
+    public TermPredicateImpl(String field, V value)
     {
         this.field = field;
         this.value = value;
     }
 
     @Override
-    public StorableField getField()
+    public String getField()
     {
         return this.field;
     }
-
-    /**
-     * Return the field
-     * 
-     * @return
-     */
-    public TermPredicate setField(StorableField field)
+    
+    @Override
+    public void setField(String field)
     {
         this.field = field;
-        return this;
     }
 
     @Override
-    public Object getValue()
+    public V getValue()
     {
         return value;
     }
 
     @Override
-    public <V> V getValue(Class<V> clazz)
-    {
-        return clazz.cast(value);
-    }
-
-    /**
-     * Set the value
-     * 
-     * @param value
-     * @return
-     */
-    public <V> TermPredicate setValue(V value)
+    public void setValue(V value)
     {
         this.value = value;
-        return this;
     }
 }

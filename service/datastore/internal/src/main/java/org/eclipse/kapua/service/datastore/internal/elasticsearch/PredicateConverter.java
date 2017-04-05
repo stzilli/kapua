@@ -19,7 +19,7 @@ import org.eclipse.kapua.service.datastore.DatastoreObjectFactory;
 import org.eclipse.kapua.service.datastore.internal.model.query.AndPredicateImpl;
 import org.eclipse.kapua.service.datastore.model.StorableId;
 import org.eclipse.kapua.service.datastore.model.query.AndPredicate;
-import org.eclipse.kapua.service.datastore.model.query.ChannelMatchPredicate;
+import org.eclipse.kapua.service.datastore.model.query.ChannelPredicate;
 import org.eclipse.kapua.service.datastore.model.query.ExistsPredicate;
 import org.eclipse.kapua.service.datastore.model.query.IdsPredicate;
 import org.eclipse.kapua.service.datastore.model.query.RangePredicate;
@@ -61,9 +61,9 @@ public class PredicateConverter {
         //
         // Force the ScopeId predicate in order to partition data by it.
         AndPredicate andPredicate = new AndPredicateImpl();
-        andPredicate.getPredicates().add(storablePredicateFactory.newTermPredicate(ChannelInfoField.SCOPE_ID, query.getScopeId().toCompactId()));
+        andPredicate.getPredicates().add(storablePredicateFactory.newTermPredicate(ChannelInfoField.SCOPE_ID.field(), query.getScopeId().toCompactId()));
 
-        if(query.getPredicate() != null){
+        if (query.getPredicate() != null) {
             andPredicate.getPredicates().add(query.getPredicate());
         }
         return toElasticsearchQuery(andPredicate);
@@ -92,8 +92,8 @@ public class PredicateConverter {
             return toElasticsearchQuery((IdsPredicate) predicate);
         }
 
-        if (predicate instanceof ChannelMatchPredicate) {
-            return toElasticsearchQuery((ChannelMatchPredicate) predicate);
+        if (predicate instanceof ChannelPredicate) {
+            return toElasticsearchQuery((ChannelPredicate) predicate);
         }
 
         if (predicate instanceof RangePredicate) {
@@ -153,14 +153,14 @@ public class PredicateConverter {
     }
 
     /**
-     * Convert the Kapua {@link ChannelMatchPredicate} to the specific Elasticsearch {@link QueryBuilder}
+     * Convert the Kapua {@link ChannelPredicate} to the specific Elasticsearch {@link QueryBuilder}
      *
      * @param predicate
      * @return
      * @throws EsQueryConversionException
      * @since 1.0.0
      */
-    private static QueryBuilder toElasticsearchQuery(ChannelMatchPredicate predicate)
+    private static QueryBuilder toElasticsearchQuery(ChannelPredicate predicate)
             throws EsQueryConversionException {
         if (predicate == null || Strings.isNullOrEmpty(predicate.getExpression())) {
             throw new EsQueryConversionException("Predicate parameter is undefined");
@@ -186,13 +186,13 @@ public class PredicateConverter {
      * @throws EsQueryConversionException
      * @since 1.0.0
      */
-    private static QueryBuilder toElasticsearchQuery(RangePredicate predicate)
+    private static QueryBuilder toElasticsearchQuery(RangePredicate<?> predicate)
             throws EsQueryConversionException {
         if (predicate == null) {
             throw new EsQueryConversionException("Predicate parameter is undefined");
         }
 
-        RangeQueryBuilder rangeQuery = QueryBuilders.rangeQuery(predicate.getField().field());
+        RangeQueryBuilder rangeQuery = QueryBuilders.rangeQuery(predicate.getField());
         if (predicate.getMinValue() != null) {
             rangeQuery.from(predicate.getMinValue());
         }
@@ -211,13 +211,13 @@ public class PredicateConverter {
      * @throws EsQueryConversionException
      * @since 1.0.0
      */
-    private static QueryBuilder toElasticsearchQuery(TermPredicate predicate)
+    private static QueryBuilder toElasticsearchQuery(TermPredicate<?> predicate)
             throws EsQueryConversionException {
         if (predicate == null) {
             throw new EsQueryConversionException("Predicate parameter is undefined");
         }
 
-        return QueryBuilders.termQuery(predicate.getField().field(), predicate.getValue());
+        return QueryBuilders.termQuery(predicate.getField(), predicate.getValue());
     }
 
     /**

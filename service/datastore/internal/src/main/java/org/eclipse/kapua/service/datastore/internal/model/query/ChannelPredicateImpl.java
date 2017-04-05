@@ -11,22 +11,21 @@
  *******************************************************************************/
 package org.eclipse.kapua.service.datastore.internal.model.query;
 
-import org.eclipse.kapua.service.datastore.model.query.ChannelMatchPredicate;
+import org.eclipse.kapua.service.datastore.model.query.ChannelPredicate;
 
 /**
  * Implementation of query predicate for matching the channel value
  * 
- * @since 1.0
- *
+ * @since 1.0.0
  */
-public class ChannelMatchPredicateImpl implements ChannelMatchPredicate
+public class ChannelPredicateImpl implements ChannelPredicate
 {
     private String expression;
 
     /**
      * Default constructor
      */
-    public ChannelMatchPredicateImpl()
+    public ChannelPredicateImpl()
     {}
 
     /**
@@ -34,7 +33,7 @@ public class ChannelMatchPredicateImpl implements ChannelMatchPredicate
      * 
      * @param expression
      */
-    public ChannelMatchPredicateImpl(String expression)
+    public ChannelPredicateImpl(String expression)
     {
         this.expression = expression;
     }
@@ -45,15 +44,10 @@ public class ChannelMatchPredicateImpl implements ChannelMatchPredicate
         return this.expression;
     }
 
-    /**
-     * Set the channel expression (may use wildcard)
-     * 
-     * @param expression
-     * @return
-     */
-    public ChannelMatchPredicate setExpression(String expression)
+    
+    @Override
+    public void setExpression(String expression)
     {
         this.expression = expression;
-        return this;
     }
 }

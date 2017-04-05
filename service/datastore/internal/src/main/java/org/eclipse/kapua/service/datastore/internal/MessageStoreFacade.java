@@ -39,7 +39,7 @@ import org.eclipse.kapua.service.datastore.internal.elasticsearch.dao.EsMetricIn
 import org.eclipse.kapua.service.datastore.internal.model.DataIndexBy;
 import org.eclipse.kapua.service.datastore.internal.model.MessageListResultImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.ChannelInfoQueryImpl;
-import org.eclipse.kapua.service.datastore.internal.model.query.ChannelMatchPredicateImpl;
+import org.eclipse.kapua.service.datastore.internal.model.query.ChannelPredicateImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.ClientInfoQueryImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.IdsPredicateImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.MessageQueryImpl;
@@ -385,7 +385,7 @@ public final class MessageStoreFacade {
         metricQuery.setLimit(pageSize + 1);
         metricQuery.setOffset(offset);
 
-        ChannelMatchPredicateImpl channelPredicate = new ChannelMatchPredicateImpl();
+        ChannelPredicateImpl channelPredicate = new ChannelPredicateImpl();
         channelPredicate.setExpression(channel);
         metricQuery.setPredicate(channelPredicate);
 
@@ -422,7 +422,7 @@ public final class MessageStoreFacade {
         channelQuery.setLimit(pageSize + 1);
         channelQuery.setOffset(offset);
 
-        channelPredicate = new ChannelMatchPredicateImpl();
+        channelPredicate = new ChannelPredicateImpl();
         channelPredicate.setExpression(channel);
         channelQuery.setPredicate(channelPredicate);
 
@@ -463,7 +463,7 @@ public final class MessageStoreFacade {
             clientInfoQuery.setLimit(pageSize + 1);
             clientInfoQuery.setOffset(offset);
 
-            channelPredicate = new ChannelMatchPredicateImpl();
+            channelPredicate = new ChannelPredicateImpl();
             channelPredicate.setExpression(channel);
             clientInfoQuery.setPredicate(channelPredicate);
 

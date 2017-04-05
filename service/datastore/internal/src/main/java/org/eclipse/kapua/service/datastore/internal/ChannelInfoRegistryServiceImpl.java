@@ -217,9 +217,9 @@ public class ChannelInfoRegistryServiceImpl extends AbstractKapuaConfigurableSer
         messageQuery.setOffset(0);
         messageQuery.setSortFields(sort);
 
-        RangePredicate messageIdPredicate = new RangePredicateImpl(new StorableFieldImpl(EsSchema.CHANNEL_TIMESTAMP), channelInfo.getFirstMessageOn(), null);
-        TermPredicate clientIdPredicate = storablePredicateFactory.newTermPredicate(MessageField.CLIENT_ID, channelInfo.getClientId());
-        TermPredicate channelPredicate = storablePredicateFactory.newTermPredicate(MessageField.CHANNEL, channelInfo.getName());
+        RangePredicate<Date> messageIdPredicate = storablePredicateFactory.newRangePredicate(EsSchema.CHANNEL_TIMESTAMP, channelInfo.getFirstMessageOn(), null);
+        TermPredicate<String> clientIdPredicate = storablePredicateFactory.newTermPredicate(MessageField.CLIENT_ID.field(), channelInfo.getClientId());
+        TermPredicate<String> channelPredicate = storablePredicateFactory.newTermPredicate(MessageField.CHANNEL.field(), channelInfo.getName());
 
         AndPredicate andPredicate = storablePredicateFactory.newAndPredicate();
         andPredicate.and(messageIdPredicate);

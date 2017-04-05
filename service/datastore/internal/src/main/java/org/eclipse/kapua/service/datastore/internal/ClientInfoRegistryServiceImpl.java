@@ -223,8 +223,8 @@ public class ClientInfoRegistryServiceImpl extends AbstractKapuaConfigurableServ
         messageQuery.setOffset(0);
         messageQuery.setSortFields(sort);
 
-        RangePredicate messageIdPredicate = new RangePredicateImpl(new StorableFieldImpl(EsSchema.CLIENT_TIMESTAMP), clientInfo.getFirstMessageOn(), null);
-        TermPredicate clientIdPredicate = storablePredicateFactory.newTermPredicate(MessageField.CLIENT_ID, clientInfo.getClientId());
+        RangePredicate<Date> messageIdPredicate = storablePredicateFactory.newRangePredicate(EsSchema.CLIENT_TIMESTAMP, clientInfo.getFirstMessageOn(), null);
+        TermPredicate<String> clientIdPredicate = storablePredicateFactory.newTermPredicate(MessageField.CLIENT_ID.field(), clientInfo.getClientId());
 
         AndPredicate andPredicate = storablePredicateFactory.newAndPredicate();
         andPredicate.and(messageIdPredicate);

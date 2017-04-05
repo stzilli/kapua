@@ -35,12 +35,12 @@ import org.eclipse.kapua.service.datastore.MetricInfoFactory;
 import org.eclipse.kapua.service.datastore.internal.elasticsearch.ChannelInfoField;
 import org.eclipse.kapua.service.datastore.internal.elasticsearch.MessageField;
 import org.eclipse.kapua.service.datastore.internal.model.query.AndPredicateImpl;
-import org.eclipse.kapua.service.datastore.internal.model.query.ChannelMatchPredicateImpl;
+import org.eclipse.kapua.service.datastore.internal.model.query.ChannelPredicateImpl;
 import org.eclipse.kapua.service.datastore.internal.model.query.RangePredicateImpl;
 import org.eclipse.kapua.service.datastore.model.DatastoreMessage;
 import org.eclipse.kapua.service.datastore.model.MessageListResult;
 import org.eclipse.kapua.service.datastore.model.query.AndPredicate;
-import org.eclipse.kapua.service.datastore.model.query.ChannelMatchPredicate;
+import org.eclipse.kapua.service.datastore.model.query.ChannelPredicate;
 import org.eclipse.kapua.service.datastore.model.query.MessageQuery;
 import org.eclipse.kapua.service.datastore.model.query.RangePredicate;
 import org.eclipse.kapua.service.datastore.model.query.StorableFetchStyle;
@@ -96,19 +96,19 @@ public class DataMessages extends AbstractKapuaResource {
         try {
             AndPredicate andPredicate = new AndPredicateImpl();
             if (!Strings.isNullOrEmpty(clientId)) {
-                TermPredicate clientIdPredicate = storablePredicateFactory.newTermPredicate(MessageField.CLIENT_ID, clientId);
+                TermPredicate<String> clientIdPredicate = storablePredicateFactory.newTermPredicate(MessageField.CLIENT_ID.name(), clientId);
                 andPredicate.and(clientIdPredicate);
             }
 
             if (!Strings.isNullOrEmpty(channel)) {
-                ChannelMatchPredicate channelPredicate = new ChannelMatchPredicateImpl(channel);
+                ChannelPredicate channelPredicate = storablePredicateFactory.newChannelPredicate(channel);
                 andPredicate.and(channelPredicate);
             }
-
+            
             Date startDate = startDateParam != null ? startDateParam.getDate() : null;
             Date endDate = endDateParam != null ? endDateParam.getDate() : null;
-            if (startDate != null || endDate != null) {
-                RangePredicate timestampPredicate = new RangePredicateImpl(ChannelInfoField.TIMESTAMP, startDate, endDate);
+            if ( startDate != null || endDate != null) {
+                RangePredicate<Date> timestampPredicate = storablePredicateFactory.newRangePredicate(ChannelInfoField.TIMESTAMP.field(), startDate, endDate);
                 andPredicate.and(timestampPredicate);
             }
 
@@ -128,7 +128,7 @@ public class DataMessages extends AbstractKapuaResource {
 
     /**
      * Queries the results with the given {@link DatastorMessageQuery} parameter.
-     *
+     * 
      * @param scopeId The {@link ScopeId} in which to search results.
      * @param query   The {@link DatastorMessageQuery} to used to filter results.
      * @return The {@link MessageListResult} of all the result matching the given {@link DatastorMessageQuery} parameter.
@@ -157,7 +157,7 @@ public class DataMessages extends AbstractKapuaResource {
 
     /**
      * Counts the results with the given {@link DatastorMessageQuery} parameter.
-     *
+     * 
      * @param scopeId The {@link ScopeId} in which to search results.
      * @param query   The {@link DatastorMessageQuery} to used to filter results.
      * @return The count of all the result matching the given {@link DatastorMessageQuery} parameter.

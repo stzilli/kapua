@@ -30,12 +30,12 @@ import org.eclipse.kapua.service.datastore.ChannelInfoRegistryService;
 import org.eclipse.kapua.service.datastore.DatastoreObjectFactory;
 import org.eclipse.kapua.service.datastore.internal.elasticsearch.ChannelInfoField;
 import org.eclipse.kapua.service.datastore.internal.model.query.AndPredicateImpl;
-import org.eclipse.kapua.service.datastore.internal.model.query.ChannelMatchPredicateImpl;
+import org.eclipse.kapua.service.datastore.internal.model.query.ChannelPredicateImpl;
 import org.eclipse.kapua.service.datastore.model.ChannelInfo;
 import org.eclipse.kapua.service.datastore.model.ChannelInfoListResult;
 import org.eclipse.kapua.service.datastore.model.query.AndPredicate;
 import org.eclipse.kapua.service.datastore.model.query.ChannelInfoQuery;
-import org.eclipse.kapua.service.datastore.model.query.ChannelMatchPredicate;
+import org.eclipse.kapua.service.datastore.model.query.ChannelPredicate;
 import org.eclipse.kapua.service.datastore.model.query.StorablePredicateFactory;
 import org.eclipse.kapua.service.datastore.model.query.TermPredicate;
 
@@ -82,12 +82,12 @@ public class DataChannels extends AbstractKapuaResource {
         try {
             AndPredicate andPredicate = new AndPredicateImpl();
             if (!Strings.isNullOrEmpty(clientId)) {
-                TermPredicate clientIdPredicate = storablePredicateFactory.newTermPredicate(ChannelInfoField.CLIENT_ID, clientId);
+                TermPredicate<String> clientIdPredicate = storablePredicateFactory.newTermPredicate(ChannelInfoField.CLIENT_ID.field(), clientId);
                 andPredicate.and(clientIdPredicate);
             }
 
             if (!Strings.isNullOrEmpty(name)) {
-                ChannelMatchPredicate channelPredicate = new ChannelMatchPredicateImpl(name);
+                ChannelPredicate channelPredicate = storablePredicateFactory.newChannelPredicate(name);
                 andPredicate.and(channelPredicate);
             }
 

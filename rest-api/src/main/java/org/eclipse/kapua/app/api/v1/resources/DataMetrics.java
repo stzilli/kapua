@@ -11,6 +11,8 @@
  *******************************************************************************/
 package org.eclipse.kapua.app.api.v1.resources;
 
+import java.util.Date;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
@@ -31,11 +33,11 @@ import org.eclipse.kapua.service.datastore.MetricInfoFactory;
 import org.eclipse.kapua.service.datastore.MetricInfoRegistryService;
 import org.eclipse.kapua.service.datastore.internal.elasticsearch.MetricInfoField;
 import org.eclipse.kapua.service.datastore.internal.model.query.AndPredicateImpl;
-import org.eclipse.kapua.service.datastore.internal.model.query.ChannelMatchPredicateImpl;
+import org.eclipse.kapua.service.datastore.internal.model.query.ChannelPredicateImpl;
 import org.eclipse.kapua.service.datastore.model.MetricInfo;
 import org.eclipse.kapua.service.datastore.model.MetricInfoListResult;
 import org.eclipse.kapua.service.datastore.model.query.AndPredicate;
-import org.eclipse.kapua.service.datastore.model.query.ChannelMatchPredicate;
+import org.eclipse.kapua.service.datastore.model.query.ChannelPredicate;
 import org.eclipse.kapua.service.datastore.model.query.MetricInfoQuery;
 import org.eclipse.kapua.service.datastore.model.query.StorablePredicateFactory;
 import org.eclipse.kapua.service.datastore.model.query.TermPredicate;
@@ -86,17 +88,17 @@ public class DataMetrics extends AbstractKapuaResource {
         try {
             AndPredicate andPredicate = new AndPredicateImpl();
             if (!Strings.isNullOrEmpty(clientId)) {
-                TermPredicate clientIdPredicate = storablePredicateFactory.newTermPredicate(MetricInfoField.CLIENT_ID, clientId);
+                TermPredicate<String> clientIdPredicate = storablePredicateFactory.newTermPredicate(MetricInfoField.CLIENT_ID.field(), clientId);
                 andPredicate.and(clientIdPredicate);
             }
 
             if (!Strings.isNullOrEmpty(channel)) {
-                ChannelMatchPredicate channelPredicate = new ChannelMatchPredicateImpl(channel);
+                ChannelPredicate channelPredicate = storablePredicateFactory.newChannelPredicate(channel);
                 andPredicate.and(channelPredicate);
             }
 
             if (!Strings.isNullOrEmpty(name)) {
-                TermPredicate clientIdPredicate = storablePredicateFactory.newTermPredicate(MetricInfoField.NAME_FULL, name);
+                TermPredicate<String> clientIdPredicate = storablePredicateFactory.newTermPredicate(MetricInfoField.NAME_FULL.field(), name);
                 andPredicate.and(clientIdPredicate);
             }
 

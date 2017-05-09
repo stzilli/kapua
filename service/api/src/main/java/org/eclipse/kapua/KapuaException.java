@@ -72,9 +72,10 @@ public class KapuaException extends Exception {
     }
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param t
+     *            The original {@link Throwable} thrown.
      */
     @SuppressWarnings("unused")
     private KapuaException(Throwable t) {
@@ -85,6 +86,7 @@ public class KapuaException extends Exception {
      * Builds a new KapuaException instance based on the supplied KapuaErrorCode.
      *
      * @param code
+     *            The code of the {@link KapuaException}
      */
     public KapuaException(KapuaErrorCode code) {
         this.code = code;
@@ -95,7 +97,9 @@ public class KapuaException extends Exception {
      * and optional arguments for the associated exception message.
      *
      * @param code
+     *            The code of the {@link KapuaException}
      * @param arguments
+     *            Optional arguments to add to this {@link KapuaException}
      */
     public KapuaException(KapuaErrorCode code, Object... arguments) {
         this.code = code;
@@ -107,8 +111,11 @@ public class KapuaException extends Exception {
      * an Throwable cause, and optional arguments for the associated exception message.
      *
      * @param code
+     *            The code of the {@link KapuaException}
      * @param cause
+     *            The original cause of the exception.
      * @param arguments
+     *            Optional arguments to add to this {@link KapuaException}
      */
     public KapuaException(KapuaErrorCode code, Throwable cause, Object... arguments) {
         super(cause);
@@ -117,12 +124,14 @@ public class KapuaException extends Exception {
     }
 
     /**
-     * Factory method to build an KapuaException with the KapuaErrorCode.INTERNAL_ERROR,
-     * an Throwable cause, and optional arguments for the associated exception message.
+     * Factory method to build an KapuaException with the {@link KapuaErrorCodes#INTERNAL_ERROR},
+     * an {@link Throwable} cause, and optional arguments for the associated exception message.
      *
      * @param cause
+     *            The original cause of the exception.
      * @param message
-     * @return
+     *            A message with details about the exception occurred.
+     * @return A {@link KapuaException} with {@link KapuaErrorCodes#INTERNAL_ERROR} code.
      */
     public static KapuaException internalError(Throwable cause, String message) {
         return new KapuaException(KapuaErrorCodes.INTERNAL_ERROR, cause, message);
@@ -133,7 +142,8 @@ public class KapuaException extends Exception {
      * and an Throwable cause.
      *
      * @param cause
-     * @return
+     *            The original cause of the exception.
+     * @return A {@link KapuaException} with {@link KapuaErrorCodes#INTERNAL_ERROR} code.
      */
     public static KapuaException internalError(Throwable cause) {
         String arg = cause.getMessage();
@@ -148,23 +158,26 @@ public class KapuaException extends Exception {
      * and optional arguments for the associated exception message.
      *
      * @param message
-     * @return
+     *            A message with details about the exception occurred.
+     * @return A {@link KapuaException} with {@link KapuaErrorCodes#INTERNAL_ERROR} code.
      */
     public static KapuaException internalError(String message) {
         return new KapuaException(KapuaErrorCodes.INTERNAL_ERROR, null, message);
     }
 
     /**
-     * Get the error code
+     * Gets the error code.
      *
-     * @return
+     * @return The error code of this {@link KapuaException}.
      */
     public KapuaErrorCode getCode() {
         return code;
     }
 
     /**
-     * Get error message
+     * Gets error message.
+     * 
+     * @return The message of this {@link KapuaException}.
      */
     @Override
     public String getMessage() {
@@ -209,7 +222,7 @@ public class KapuaException extends Exception {
             messagePattern = resourceBundle.getString(code.name());
         } catch (MissingResourceException mre) {
             // log the failure to load a message bundle
-            s_logger.warn("Could not load Exception Messages Bundle for Locale {}", locale);
+            s_logger.warn("Could not load Exception Messages Bundle for Locale: " + locale, mre);
         }
 
         return messagePattern;

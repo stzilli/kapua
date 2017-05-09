@@ -11,23 +11,27 @@
  *******************************************************************************/
 package org.eclipse.kapua;
 
+import org.eclipse.kapua.model.KapuaEntity;
 import org.eclipse.kapua.model.id.KapuaId;
 
 /**
  * {@link KapuaEntityNotFoundException} is thrown when an entity could not be loaded from the database.
  * 
- * @since 1.0
- *
+ * @since 1.0.0
  */
 public class KapuaEntityNotFoundException extends KapuaException {
 
     private static final long serialVersionUID = -4903038247732490215L;
 
     /**
-     * Constructor with entity name not found
+     * Constructor with entity name not found.
      * 
      * @param entityType
+     *            The type of the {@link KapuaEntity} that has not been found.
      * @param entityName
+     *            The name of the {@link KapuaEntity} that has not been found.
+     * 
+     * @since 1.0.0
      */
     public KapuaEntityNotFoundException(String entityType, String entityName) {
         super(KapuaErrorCodes.ENTITY_NOT_FOUND, new Object[] { entityType, entityName });
@@ -37,7 +41,11 @@ public class KapuaEntityNotFoundException extends KapuaException {
      * Constructor with entity identifier not found.
      * 
      * @param entityType
+     *            The type of the {@link KapuaEntity} that has not been found.
      * @param entityId
+     *            The {@link KapuaId} of the {@link KapuaEntity} that has not been found.
+     * 
+     * @since 1.0.0
      */
     public KapuaEntityNotFoundException(String entityType, KapuaId entityId) {
         super(KapuaErrorCodes.ENTITY_NOT_FOUND, new Object[] { entityType, entityId.getId() });

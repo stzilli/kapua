@@ -12,33 +12,41 @@
 package org.eclipse.kapua;
 
 /**
- * KapuaIllegalArgumentException is thrown when the value of a method parameter is invalid.
+ * {@link KapuaIllegalArgumentException} is thrown when the value of a method parameter is invalid.
  *
- * @since 1.0
- *
+ * @since 1.0.0
  */
 public class KapuaIllegalArgumentException extends KapuaException {
 
     private static final long serialVersionUID = -7067191169730223113L;
 
     /**
-     * Constructor
-     *
-     * @param argName
-     * @param argValue
-     */
-    public KapuaIllegalArgumentException(String argName, String argValue) {
-        super(KapuaErrorCodes.ILLEGAL_ARGUMENT, argName, argValue);
-    }
-
-    /**
-     * Constructor
+     * Constructor.
      *
      * @param code
+     *            The code of this {@link KapuaIllegalArgumentException}.
      * @param argName
+     *            The argument name that is invalid.
      * @param argValue
+     *            The argument value that is invalid.
+     * 
+     * @since 1.0.0
      */
     protected KapuaIllegalArgumentException(KapuaErrorCodes code, String argName, String argValue) {
         super(code, argName, argValue);
+    }
+
+    /**
+     * Constructor.
+     *
+     * @param argName
+     *            The argument name that is invalid.
+     * @param argValue
+     *            The argument value that is invalid.
+     * 
+     * @since 1.0.0
+     */
+    public KapuaIllegalArgumentException(String argName, String argValue) {
+        this(KapuaErrorCodes.ILLEGAL_ARGUMENT, argName, argValue);
     }
 }

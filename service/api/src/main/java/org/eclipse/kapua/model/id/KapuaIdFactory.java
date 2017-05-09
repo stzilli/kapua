@@ -25,16 +25,15 @@ public interface KapuaIdFactory extends KapuaObjectFactory {
 
     /**
      * Creates a new {@link KapuaId} starting the provided short identifier.<br>
-     * <p>
-     * <b>Note:</b> This operation must be the inverse function of {@link KapuaId#toCompactId()} so, in other word, this code should't fail:
-     * </p>
+     * <b>This operation must be the inverse function of {@link KapuaId#toCompactId()} so, in other word, this code should't fail:
+     * </b>
      * 
      * <pre>{@code
-     * KapuaIdFactory kapuaIdFactory = KapuaLocator.getInstance().getService(KapuaIdFactory.class);
-     * String shortId = "some well formed encoded short id";
-     * KapuaId id = kapuaIdFactory.newKapuaId(shortId);
-     * String shortIdConverted = id.getShortId();
-     * AssertTrue(shortId.equals(shortIdConverted));
+     *     KapuaIdFactory kapuaIdFactory = KapuaLocator.getInstance().getService(KapuaIdFactory.class);
+     *     String shortId = "some well formed encoded short id";
+     *     KapuaId id = kapuaIdFactory.newKapuaId(shortId);
+     *     String shortIdConverted = id.toCompactId();
+     *     AssertTrue(shortId.equals(shortIdConverted));
      * }</pre>
      * 
      * @param shortId

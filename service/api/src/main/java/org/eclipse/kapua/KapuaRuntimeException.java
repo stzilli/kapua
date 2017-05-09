@@ -39,7 +39,9 @@ public class KapuaRuntimeException extends RuntimeException {
     protected Object[] args;
 
     /**
-     * Constructor
+     * Constructor.
+     * 
+     * @since 1.0.0
      */
     @SuppressWarnings("unused")
     private KapuaRuntimeException() {
@@ -47,9 +49,12 @@ public class KapuaRuntimeException extends RuntimeException {
     }
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param message
+     *            The detail message of this {@link KapuaRuntimeException}.
+     * 
+     * @since 1.0.0
      */
     @SuppressWarnings("unused")
     private KapuaRuntimeException(String message) {
@@ -57,9 +62,12 @@ public class KapuaRuntimeException extends RuntimeException {
     }
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param throwable
+     *            The original {@link Throwable} that has occurred.
+     * 
+     * @since 1.0.0
      */
     @SuppressWarnings("unused")
     private KapuaRuntimeException(Throwable throwable) {
@@ -67,10 +75,13 @@ public class KapuaRuntimeException extends RuntimeException {
     }
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param message
+     *            The detail message of this {@link KapuaRuntimeException}.
      * @param throwable
+     *            The original {@link Throwable} that has occurred.
+     * @since 1.0.0
      */
     private KapuaRuntimeException(String message, Throwable throwable) {
         super(message, throwable);
@@ -80,6 +91,8 @@ public class KapuaRuntimeException extends RuntimeException {
      * Builds a new KapuaRuntimeException instance based on the supplied KapuaErrorCode.
      *
      * @param code
+     *            The {@link KapuaErrorCode} for this {@link KapuaRuntimeException}.
+     * @since 1.0.0
      */
     public KapuaRuntimeException(KapuaErrorCode code) {
         this(code, (Object[]) null);
@@ -90,7 +103,10 @@ public class KapuaRuntimeException extends RuntimeException {
      * and optional arguments for the associated exception message.
      *
      * @param code
+     *            The {@link KapuaErrorCode} for this {@link KapuaRuntimeException}.
      * @param arguments
+     *            Optional arguments to add to this {@link KapuaRuntimeException}.
+     * @since 1.0.0
      */
     public KapuaRuntimeException(KapuaErrorCode code, Object... arguments) {
         this(code, null, arguments);
@@ -101,8 +117,13 @@ public class KapuaRuntimeException extends RuntimeException {
      * an Throwable cause, and optional arguments for the associated exception message.
      *
      * @param code
+     *            The {@link KapuaErrorCode} for this {@link KapuaRuntimeException}.
      * @param cause
+     *            The original {@link Throwable} that has occurred.
      * @param arguments
+     *            Optional arguments to add to this {@link KapuaRuntimeException}.
+     * 
+     * @since 1.0.0
      */
     public KapuaRuntimeException(KapuaErrorCode code, Throwable cause, Object... arguments) {
         super(cause);
@@ -115,8 +136,12 @@ public class KapuaRuntimeException extends RuntimeException {
      * an Throwable cause, and optional arguments for the associated exception message.
      *
      * @param cause
+     *            The original cause of the exception.
      * @param message
-     * @return
+     *            A message with details about the exception occurred.
+     * @return A {@link KapuaRuntimeException} with {@link KapuaErrorCodes#INTERNAL_ERROR} code.
+     * 
+     * @since 1.0.0
      */
     public static KapuaRuntimeException internalError(Throwable cause, String message) {
         return new KapuaRuntimeException(KapuaErrorCodes.INTERNAL_ERROR, cause, message);
@@ -127,7 +152,10 @@ public class KapuaRuntimeException extends RuntimeException {
      * and an Throwable cause.
      *
      * @param cause
-     * @return
+     *            The original {@link Throwable} that has occurred.
+     * @return A {@link KapuaRuntimeException} with {@link KapuaErrorCodes#INTERNAL_ERROR} code.
+     * 
+     * @since 1.0.0
      */
     public static KapuaRuntimeException internalError(Throwable cause) {
         String arg = cause.getMessage();
@@ -142,23 +170,30 @@ public class KapuaRuntimeException extends RuntimeException {
      * and optional arguments for the associated exception message.
      *
      * @param message
-     * @return
+     *            A message with details about the exception occurred.
+     * @return A {@link KapuaRuntimeException} with {@link KapuaErrorCodes#INTERNAL_ERROR} code.
+     * 
+     * @since 1.0.0
      */
     public static KapuaRuntimeException internalError(String message) {
         return new KapuaRuntimeException(KapuaErrorCodes.INTERNAL_ERROR, null, message);
     }
 
     /**
-     * Get the error code
+     * Get the error code.
      *
-     * @return
+     * @return The message of this {@link KapuaRuntimeException}.
+     * 
+     * @since 1.0.0
      */
     public KapuaErrorCode getCode() {
         return code;
     }
 
     /**
-     * Get message
+     * Gets error message.
+     * 
+     * @return The message of this {@link KapuaRuntimeException}.
      */
     @Override
     public String getMessage() {

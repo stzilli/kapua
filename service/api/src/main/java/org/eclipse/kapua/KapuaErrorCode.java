@@ -12,17 +12,18 @@
 package org.eclipse.kapua;
 
 /**
- * Kapua error code definition.
+ * {@link KapuaErrorCode} definition.
  *
- * @since 1.0
- *
+ * @since 1.0.0
  */
 public interface KapuaErrorCode {
 
     /**
      * Get the error code name
      * 
-     * @return
+     * @return The name of the {@link KapuaErrorCode}
+     * 
+     * @since 1.0.0
      */
     public String name();
 }

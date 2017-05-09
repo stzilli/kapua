@@ -189,7 +189,10 @@ public class Request {
     }
 
     /**
-     * Send an error reply
+     * Send an error reply.
+     * 
+     * @param error
+     *            The {@link Throwable} cause.
      */
     public void replyError(final Throwable error) {
         final Map<String, Object> metrics = new HashMap<>();

@@ -33,6 +33,9 @@ public final class KapuaDateUtils {
             .ofPattern(DEFAULT_DATE_PATTERN, Locale.US)
             .withZone(ZoneOffset.UTC);
 
+    private KapuaDateUtils() {
+    }
+
     /**
      * Get current date
      *

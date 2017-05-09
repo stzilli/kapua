@@ -197,48 +197,48 @@ public class GwtKapuaModelConverter {
         return userQuery;
     }
 
-    public static AccountQuery convertAccountQuery(PagingLoadConfig loadConfig, GwtAccountQuery gwtAccountQuery){
+    public static AccountQuery convertAccountQuery(PagingLoadConfig loadConfig, GwtAccountQuery gwtAccountQuery) {
         KapuaLocator locator = KapuaLocator.getInstance();
         AccountFactory factory = locator.getFactory(AccountFactory.class);
         AccountQuery query = factory.newQuery(convert(gwtAccountQuery.getScopeId()));
         AndPredicate predicate = new AndPredicate();
-        
-        if(gwtAccountQuery.getName() != null && !gwtAccountQuery.getName().trim().isEmpty()){
+
+        if (gwtAccountQuery.getName() != null && !gwtAccountQuery.getName().trim().isEmpty()) {
             predicate.and(new AttributePredicate<String>("name", gwtAccountQuery.getName(), Operator.LIKE));
         }
-        
-        if(gwtAccountQuery.getOrganizationName() != null && !gwtAccountQuery.getOrganizationName().isEmpty()){
+
+        if (gwtAccountQuery.getOrganizationName() != null && !gwtAccountQuery.getOrganizationName().isEmpty()) {
             predicate.and(new AttributePredicate<String>("organization.name", gwtAccountQuery.getOrganizationName(), Operator.LIKE));
         }
-        
-        if(gwtAccountQuery.getOrganizationEmail() != null && !gwtAccountQuery.getOrganizationEmail().isEmpty()){
+
+        if (gwtAccountQuery.getOrganizationEmail() != null && !gwtAccountQuery.getOrganizationEmail().isEmpty()) {
             predicate.and(new AttributePredicate<String>("organization.email", gwtAccountQuery.getOrganizationEmail(), Operator.LIKE));
         }
-        
+
         query.setPredicate(predicate);
-        
+
         return query;
     }
-    
-    public static DeviceConnectionQuery convertConnectionQuery(PagingLoadConfig loadConfig, GwtDeviceConnectionQuery gwtDeviceConnectionQuery){
+
+    public static DeviceConnectionQuery convertConnectionQuery(PagingLoadConfig loadConfig, GwtDeviceConnectionQuery gwtDeviceConnectionQuery) {
         KapuaLocator locator = KapuaLocator.getInstance();
         DeviceConnectionFactory factory = locator.getFactory(DeviceConnectionFactory.class);
         DeviceConnectionQuery query = factory.newQuery(convert(gwtDeviceConnectionQuery.getScopeId()));
         AndPredicate predicate = new AndPredicate();
-        
-        if(gwtDeviceConnectionQuery.getClientId() != null && !gwtDeviceConnectionQuery.getClientId().trim().isEmpty()){
+
+        if (gwtDeviceConnectionQuery.getClientId() != null && !gwtDeviceConnectionQuery.getClientId().trim().isEmpty()) {
             predicate.and(new AttributePredicate<String>("clientId", gwtDeviceConnectionQuery.getClientId(), Operator.LIKE));
         }
-        
-        if(gwtDeviceConnectionQuery.getConnectionStatus() != null && !gwtDeviceConnectionQuery.getConnectionStatus().equals(GwtDeviceConnectionStatus.ANY.toString())){
+
+        if (gwtDeviceConnectionQuery.getConnectionStatus() != null && !gwtDeviceConnectionQuery.getConnectionStatus().equals(GwtDeviceConnectionStatus.ANY.toString())) {
             predicate.and(new AttributePredicate<DeviceConnectionStatus>("status", convertConnectionStatus(gwtDeviceConnectionQuery.getConnectionStatus()), Operator.EQUAL));
         }
-        
+
         query.setPredicate(predicate);
-        
+
         return query;
     }
-    
+
     public static DeviceConnectionStatus convertConnectionStatus(String connectionStatus) {
         return DeviceConnectionStatus.valueOf(connectionStatus);
     }
@@ -261,7 +261,7 @@ public class GwtKapuaModelConverter {
         // Convert query
         CredentialQuery credentialQuery = credentialFactory.newQuery(convert(gwtCredentialQuery.getScopeId()));
         AndPredicate andPredicate = new AndPredicate();
-        if (gwtCredentialQuery.getUserId() != null && !gwtCredentialQuery.getUserId().trim().isEmpty()){
+        if (gwtCredentialQuery.getUserId() != null && !gwtCredentialQuery.getUserId().trim().isEmpty()) {
             andPredicate.and(new AttributePredicate<KapuaId>(CredentialPredicates.USER_ID, convert(gwtCredentialQuery.getUserId())));
         }
         if (gwtCredentialQuery.getUsername() != null && !gwtCredentialQuery.getUsername().trim().isEmpty()) {
@@ -279,13 +279,13 @@ public class GwtKapuaModelConverter {
         return credentialQuery;
     }
 
-    public static ChannelInfoQuery convertChannelInfoQuery(GwtDataChannelInfoQuery query, PagingLoadConfig pagingLoadConfig){
+    public static ChannelInfoQuery convertChannelInfoQuery(GwtDataChannelInfoQuery query, PagingLoadConfig pagingLoadConfig) {
         ChannelInfoQueryImpl channelInfoQuery = new ChannelInfoQueryImpl(convert(query.getScopeId()));
         channelInfoQuery.setOffset(pagingLoadConfig.getOffset());
         channelInfoQuery.setLimit(pagingLoadConfig.getLimit());
         return channelInfoQuery;
     }
-    
+
     /**
      * Converts a {@link GwtRole} into a {@link Role} object for backend usage
      *
@@ -315,8 +315,8 @@ public class GwtKapuaModelConverter {
 
                 Permission p = convert(new GwtPermission(gwtRolePermission.getDomainEnum(),
                         gwtRolePermission.getActionEnum(),
-                    gwtRolePermission.getTargetScopeId(),
-                    gwtRolePermission.getGroupId()));
+                        gwtRolePermission.getTargetScopeId(),
+                        gwtRolePermission.getGroupId()));
 
                 RolePermission rp = rolePermissionFactory.newEntity(scopeId);
                 rp.setPermission(p);
@@ -407,7 +407,7 @@ public class GwtKapuaModelConverter {
         KapuaId scopeId = convert(gwtCredential.getScopeId());
         Credential credential = credentialFactory
                 .newCredential(scopeId, convert(gwtCredential.getUserId()), convert(gwtCredential.getCredentialTypeEnum()), gwtCredential.getCredentialKey());
-        if(gwtCredential.getId() != null && !gwtCredential.getId().trim().isEmpty()){
+        if (gwtCredential.getId() != null && !gwtCredential.getId().trim().isEmpty()) {
             credential.setId(convert(gwtCredential.getId()));
         }
         //
@@ -677,7 +677,7 @@ public class GwtKapuaModelConverter {
     public static Map<String, Object> convert(GwtConfigComponent configComponent) {
         Map<String, Object> parameters = new HashMap<String, Object>();
         for (GwtConfigParameter gwtConfigParameter : configComponent.getParameters()) {
-            switch(gwtConfigParameter.getType()) {
+            switch (gwtConfigParameter.getType()) {
             case BOOLEAN:
                 parameters.put(gwtConfigParameter.getId(), Boolean.parseBoolean(gwtConfigParameter.getValue()));
                 break;

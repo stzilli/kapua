@@ -564,7 +564,7 @@ public class KapuaGwtModelConverter {
 
         return gwtDeviceEvent;
     }
-    
+
     public static GwtDeviceConnection convert(DeviceConnection deviceConnection) {
         GwtDeviceConnection gwtDeviceConnection = new GwtDeviceConnection();
 
@@ -581,7 +581,7 @@ public class KapuaGwtModelConverter {
         gwtDeviceConnection.setProtocol(deviceConnection.getProtocol());
         gwtDeviceConnection.setConnectionStatus(convert(deviceConnection.getStatus()));
         gwtDeviceConnection.setOptlock(deviceConnection.getOptlock());
-        
+
         //
         // Return converted entity
         return gwtDeviceConnection;

@@ -73,6 +73,9 @@ public interface DevicePackage {
 
     /**
      * Set device package bundle informations
+     * 
+     * @param bundleInfos
+     *            The {@link DevicePackageBundleInfos} to set
      */
     public <B extends DevicePackageBundleInfos> void setBundleInfos(B bundleInfos);
 

@@ -16,8 +16,9 @@ import org.eclipse.kapua.KapuaException;
 /**
  * Entity manager callback result service definition.
  *
- * @param <T> Execution result return type
- * @since 1.0
+ * @param <T>
+ *            Execution result return type
+ * @since 1.0.0
  */
 public interface EntityManagerResultCallback<T> {
 
@@ -31,6 +32,8 @@ public interface EntityManagerResultCallback<T> {
      * @param entityManager
      * @return
      * @throws KapuaException
+     * 
+     * @since 1.0.0
      */
     T onResult(EntityManager entityManager) throws KapuaException;
 

@@ -21,6 +21,8 @@ import java.util.Locale;
 
 /**
  * Date utilities
+ *
+ * @since 1.0.0
  */
 public final class KapuaDateUtils {
 
@@ -30,21 +32,46 @@ public final class KapuaDateUtils {
     private static final String DEFAULT_DATE_PATTERN = "MM/dd/yyyy h:mm a"; // example 24/01/2017 11:22 AM
 
     private static final DateTimeFormatter formatter = DateTimeFormatter
-            .ofPattern(DEFAULT_DATE_PATTERN, Locale.US)
-            .withZone(ZoneOffset.UTC);
+            .ofPattern(DEFAULT_DATE_PATTERN, getKapuaLocale())
+            .withZone(getTimeZone());
 
+    /**
+     * Private empty constructor.
+     * All methods are static.
+     * 
+     * @since 1.0.0
+     */
     private KapuaDateUtils() {
     }
 
     /**
      * Get current date
      *
-     * @return current date
+     * @return current date.
+     * @since 1.0.0
      */
     public static Instant getKapuaSysDate() {
         return Instant.now();
     }
 
+    /**
+     * Gets the {@link Locale}.
+     * 
+     * @return The current {@link Locale}.
+     * 
+     * @since 1.0.0
+     */
+    public static Locale getKapuaLocale() {
+        return Locale.US;
+    }
+
+    /**
+     * Gets the timezone.
+     * 
+     * @return The timezone.
+     * 
+     * @since 1.0.0
+     */
     public static ZoneId getTimeZone() {
         return ZoneOffset.UTC;
     }
@@ -53,11 +80,13 @@ public final class KapuaDateUtils {
      * Parse the provided String using the default pattern {@value #DEFAULT_DATE_PATTERN}
      *
      * @param date
-     * @return
+     *            The {@link String} formatted date.
+     * @return The parsed {@link Instant}.
      * @throws ParseException
+     * 
+     * @since 1.0.0
      */
     public static Instant parseDate(String date) throws ParseException {
         return Instant.from(formatter.parse(date));
     }
-
 }

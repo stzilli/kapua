@@ -16,8 +16,9 @@ import org.eclipse.kapua.KapuaException;
 /**
  * Entity manager callback insert result service definition.
  *
- * @param <T> Insert execution result return type
- * @since 1.0
+ * @param <T>
+ *            Insert execution result return type
+ * @since 1.0.0
  */
 public interface EntityManagerInsertCallback<T> {
 
@@ -32,6 +33,8 @@ public interface EntityManagerInsertCallback<T> {
      * @param entityManager
      * @return
      * @throws KapuaException
+     * 
+     * @since 1.0.0
      */
     T onInsert(EntityManager entityManager) throws KapuaException;
 

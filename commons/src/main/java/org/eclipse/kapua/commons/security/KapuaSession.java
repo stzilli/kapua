@@ -28,7 +28,7 @@ public class KapuaSession implements Serializable {
 
     private static final long serialVersionUID = -3831904230950408142L;
 
-    public final static String KAPUA_SESSION_KEY = "KapuaSession";
+    public static final String KAPUA_SESSION_KEY = "KapuaSession";
 
     private static final List<String> trustedClasses = new ArrayList<>();
     private static final String TRUST_CLASS_METHOD_PATTERN = "{0}.{1}";
@@ -109,8 +109,13 @@ public class KapuaSession implements Serializable {
      * Constructs a {@link KapuaSession} with given parameters
      *
      * @param accessToken
+     *            The {@link AccessToken} of this {@link KapuaSession}.
      * @param scopeId
+     *            The scopeId of this {@link KapuaSession}.
      * @param userId
+     *            The userId of this {@link KapuaSession}.
+     * 
+     * @since 1.0.0
      */
     public KapuaSession(AccessToken accessToken,
             KapuaId scopeId,
@@ -125,6 +130,8 @@ public class KapuaSession implements Serializable {
      * Get the access token
      *
      * @return
+     * 
+     * @since 1.0.0
      */
     public AccessToken getAccessToken() {
         return accessToken;
@@ -134,6 +141,8 @@ public class KapuaSession implements Serializable {
      * Get the scope identifier
      *
      * @return
+     * 
+     * @since 1.0.0
      */
     public KapuaId getScopeId() {
         return scopeId;
@@ -143,6 +152,8 @@ public class KapuaSession implements Serializable {
      * Get the user identifier
      *
      * @return
+     * 
+     * @since 1.0.0
      */
     public KapuaId getUserId() {
         return userId;
@@ -151,6 +162,8 @@ public class KapuaSession implements Serializable {
     /**
      * Set the trusted mode status.<br>
      * If true every rights check will be skipped, in other word <b>the user is trusted so he is allowed to execute every operation</b> defined in the system.
+     * 
+     * @since 1.0.0
      */
     final void setTrustedMode(boolean trustedMode) {
         this.trustedMode = trustedMode;
@@ -161,6 +174,8 @@ public class KapuaSession implements Serializable {
      * If true every rights check will be skipped, in other word <b>the user is trusted so he is allowed to execute every operation</b> defined in the system.
      *
      * @return
+     * 
+     * @since 1.0.0
      */
     public final boolean isTrustedMode() {
         return trustedMode;

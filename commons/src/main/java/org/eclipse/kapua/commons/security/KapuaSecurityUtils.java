@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Kapua security utility to handle the bind/unbind operation of the Kapua session into the thread context.
  *
- * @since 1.0
+ * @since 1.0.0
  */
 public class KapuaSecurityUtils {
 
@@ -61,16 +61,16 @@ public class KapuaSecurityUtils {
      * Execute the {@link Runnable} in a privileged context.<br>
      * Trusted mode means that checks for permissions and role will pass.
      *
-     * @param runnable
+     * @param privilegedAction
      *            The {@link ThrowingRunnable} action to be executed.
      * @throws KapuaException
      */
-    public static void doPrivileged(final ThrowingRunnable runnable) throws KapuaException {
+    public static void doPrivileged(final ThrowingRunnable privilegedAction) throws KapuaException {
         doPrivileged(new Callable<Void>() {
 
             @Override
             public Void call() throws Exception {
-                runnable.run();
+                privilegedAction.run();
                 return null;
             }
 

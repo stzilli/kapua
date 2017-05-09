@@ -23,8 +23,7 @@ import org.eclipse.kapua.model.id.KapuaId;
  * @param <E>
  *            entity type
  * 
- * @since 1.0
- * 
+ * @since 1.0.0
  */
 @SuppressWarnings("serial")
 public abstract class AbstractKapuaEntityCreator<E extends KapuaEntity> implements KapuaEntityCreator<E>, Serializable {
@@ -32,15 +31,24 @@ public abstract class AbstractKapuaEntityCreator<E extends KapuaEntity> implemen
     protected KapuaId scopeId;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param scopeId
+     * 
+     * @since 1.0.0
      */
     protected AbstractKapuaEntityCreator(KapuaId scopeId) {
         super();
         setScopeId(scopeId);
     }
 
+    /**
+     * Constructor.
+     * 
+     * @param abstractEntityCreator
+     * 
+     * @since 1.0.0
+     */
     protected AbstractKapuaEntityCreator(AbstractKapuaEntityCreator<E> abstractEntityCreator) {
         this(abstractEntityCreator.getScopeId());
     }

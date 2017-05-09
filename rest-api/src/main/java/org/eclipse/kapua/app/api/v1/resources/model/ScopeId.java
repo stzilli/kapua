@@ -42,7 +42,8 @@ public class ScopeId implements KapuaId {
      * Builds the {@link KapuaId} from the given {@link String} compact scopeId.
      * If the given parameter equals to "_" the current session scope will be used.
      *
-     * @param compactScopeId The compact scopeId to parse.
+     * @param compactScopeId
+     *            The compact scopeId to parse.
      * @since 1.0.0
      */
     public ScopeId(String compactScopeId) {

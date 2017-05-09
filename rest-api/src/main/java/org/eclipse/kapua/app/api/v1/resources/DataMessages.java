@@ -64,20 +64,13 @@ public class DataMessages extends AbstractKapuaResource {
     /**
      * Gets the {@link DatastoreMessage} list in the scope.
      *
-     * @param scopeId
-     *            The {@link ScopeId} in which to search results.
-     * @param clientId
-     *            The client id to filter results.
-     * @param channel
-     *            The channel id to filter results. It allows '#' wildcard in last channel level.
-     * @param startDateParam
-     *            The start date to filter the results. Must come before endDate parameter.
-     * @param endDateParam
-     *            The end date to filter the results. Must come after startDate parameter
-     * @param offset
-     *            The result set offset.
-     * @param limit
-     *            The result set limit.
+     * @param scopeId   The {@link ScopeId} in which to search results.
+     * @param clientId  The client id to filter results.
+     * @param channel   The channel id to filter results. It allows '#' wildcard in last channel level.
+     * @param startDateParam The start date to filter the results. Must come before endDate parameter.
+     * @param endDateParam   The end date to filter the results. Must come after startDate parameter
+     * @param offset    The result set offset.
+     * @param limit     The result set limit.
      * @return The {@link MessageListResult} of all the datastoreMessages associated to the current selected scope.
      * @since 1.0.0
      */
@@ -143,10 +136,8 @@ public class DataMessages extends AbstractKapuaResource {
     /**
      * Queries the results with the given {@link MessageQuery} parameter.
      *
-     * @param scopeId
-     *            The {@link ScopeId} in which to search results.
-     * @param query
-     *            The {@link MessageQuery} to used to filter results.
+     * @param scopeId The {@link ScopeId} in which to search results.
+     * @param query   The {@link MessageQuery} to used to filter results.
      * @return The {@link MessageListResult} of all the result matching the given {@link MessageQuery} parameter.
      * @since 1.0.0
      */
@@ -174,10 +165,8 @@ public class DataMessages extends AbstractKapuaResource {
     /**
      * Counts the results with the given {@link MessageQuery} parameter.
      *
-     * @param scopeId
-     *            The {@link ScopeId} in which to search results.
-     * @param query
-     *            The {@link MessageQuery} to used to filter results.
+     * @param scopeId The {@link ScopeId} in which to search results.
+     * @param query   The {@link MessageQuery} to used to filter results.
      * @return The count of all the result matching the given {@link MessageQuery} parameter.
      * @since 1.0.0
      */

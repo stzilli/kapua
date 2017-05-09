@@ -25,12 +25,11 @@ import org.eclipse.kapua.service.authorization.access.AccessInfoListResult;
  * {@link AccessInfo} DAO
  * 
  * @since 1.0.0
- *
  */
 public class AccessInfoDAO extends ServiceDAO {
 
     /**
-     * Creates and return new {@link AccessInfo}
+     * Creates and return new {@link AccessInfo}.
      * 
      * @param em
      * @param creator

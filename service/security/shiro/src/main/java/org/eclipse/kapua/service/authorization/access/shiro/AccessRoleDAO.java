@@ -51,6 +51,7 @@ public class AccessRoleDAO extends ServiceDAO {
      * Find the access info by access permission identifier
      * 
      * @param em
+     * @param accessRoleId
      * @return
      */
     public static AccessRole find(EntityManager em, KapuaId accessRoleId) {
@@ -61,6 +62,7 @@ public class AccessRoleDAO extends ServiceDAO {
      * Delete the access permission by access permission id.
      * 
      * @param em
+     * @param accessRoleId
      * @throws KapuaEntityNotFoundException
      *             If {@link AccessRole} is not found.
      */

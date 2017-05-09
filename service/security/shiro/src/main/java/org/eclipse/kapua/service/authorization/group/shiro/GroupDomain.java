@@ -23,11 +23,10 @@ import org.eclipse.kapua.service.authorization.permission.Actions;
 import com.google.common.collect.Lists;
 
 /**
- * Group domain.<br>
+ * Group {@link Domain}.<br>
  * Used to describe the {@link Group} domain in the {@link GroupService}.
  * 
- * @since 1.0
- *
+ * @since 1.0.0
  */
 public class GroupDomain extends AbstractKapuaEntity implements Domain {
 

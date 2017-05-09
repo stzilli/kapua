@@ -19,10 +19,9 @@ import org.eclipse.kapua.service.authentication.credential.Credential;
 import org.eclipse.kapua.service.user.User;
 
 /**
- * Kapua {@link AuthenticationInfo} implementation
+ * Kapua {@link AuthenticationInfo} implementation.
  * 
- * @since 1.0
- *
+ * @since 1.0.0
  */
 public class LoginAuthenticationInfo implements AuthenticationInfo {
 
@@ -34,7 +33,7 @@ public class LoginAuthenticationInfo implements AuthenticationInfo {
     private Credential credentials;
 
     /**
-     * Constructor
+     * Constructor.
      * 
      * @param realmName
      * @param account

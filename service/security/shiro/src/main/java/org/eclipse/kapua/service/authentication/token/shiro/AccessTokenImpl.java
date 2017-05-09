@@ -23,7 +23,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.eclipse.kapua.commons.model.AbstractKapuaEntity;
 import org.eclipse.kapua.commons.model.AbstractKapuaUpdatableEntity;
 import org.eclipse.kapua.commons.model.id.IdGenerator;
 import org.eclipse.kapua.commons.model.id.KapuaEid;
@@ -135,8 +134,9 @@ public class AccessTokenImpl extends AbstractKapuaUpdatableEntity implements Acc
     }
 
     /**
-     * The {@link AbstractKapuaUpdatableEntity#prePersistsAction()} is overridden because the property {@link AbstractKapuaEntity#getCreatedBy()}
-     * must be set to the current userId instead of the user in session, which is not set at the time of the creation of this {@link AccessToken}.
+     * The {@link #prePersistsAction()} is overridden because the property {@link #getCreatedBy()}
+     * must be set to the current {@link #userId} instead of the user in session,
+     * which is not set at the time of the creation of this {@link AccessToken}.
      * 
      * @since 1.0.0
      */

@@ -26,9 +26,6 @@ import java.util.Locale;
  */
 public final class KapuaDateUtils {
 
-    private KapuaDateUtils() {
-    }
-
     private static final String DEFAULT_DATE_PATTERN = "MM/dd/yyyy h:mm a"; // example 24/01/2017 11:22 AM
 
     private static final DateTimeFormatter formatter = DateTimeFormatter

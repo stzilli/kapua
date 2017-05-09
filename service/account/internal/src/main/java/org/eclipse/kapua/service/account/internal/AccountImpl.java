@@ -63,12 +63,12 @@ public class AccountImpl extends AbstractKapuaNamedEntity implements Account {
     private String parentAccountPath;
 
     /**
-     * Constructor
+     * Constructor.
      */
     protected AccountImpl() {
         super();
     }
-    
+
     /**
      * Constructor
      *

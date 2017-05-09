@@ -59,6 +59,7 @@ public class ChannelInfoXContentBuilder {
     /**
      * Get the channel key (return the hash code of the string obtained by concatenating the accountName, clientId and channel with the slash)
      *
+     * @param scopeId
      * @param clientId
      * @param channel
      * @return
@@ -89,6 +90,7 @@ public class ChannelInfoXContentBuilder {
      * <b>If the id is null then it is generated</b>
      *
      * @param id
+     * @param scopeId
      * @param clientId
      * @param channel
      * @return

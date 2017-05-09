@@ -115,7 +115,6 @@ public class MetricInfoXContentBuilder {
 
     /**
      * Get the metric identifier getting parameters from the metricInfo. Then it calls {@link #getOrDeriveId(StorableId, KapuaId, String, String, String)}
-     * metricName, String metricType)}
      *
      * @param id
      * @param metricInfo
@@ -281,6 +280,7 @@ public class MetricInfoXContentBuilder {
     /**
      * Get the {@link MetricInfoXContentBuilder} initialized with the provided parameters
      *
+     * @param scopeId
      * @param clientId
      * @param messageId
      * @param message

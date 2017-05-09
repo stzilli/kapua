@@ -160,6 +160,7 @@ public class MessageXContentBuilder {
     /**
      * Get the {@link MessageXContentBuilder} initialized with the provided parameters
      *
+     * @param scopeId
      * @param message
      * @param indexedOn
      * @param receivedOn

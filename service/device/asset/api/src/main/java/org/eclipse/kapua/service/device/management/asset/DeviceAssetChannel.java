@@ -31,7 +31,10 @@ public interface DeviceAssetChannel {
     public String getName();
 
     /**
-     * Gets the name of the channel.
+     * Sets the name of the channel.
+     * 
+     * @param name
+     *            The name of the channel.
      * 
      * @since 1.0.0
      */

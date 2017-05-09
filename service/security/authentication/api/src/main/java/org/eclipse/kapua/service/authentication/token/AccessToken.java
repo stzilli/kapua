@@ -82,10 +82,10 @@ public interface AccessToken extends KapuaUpdatableEntity, Serializable {
     public KapuaId getUserId();
 
     /**
-     * Sets the {@link User} id of this {@link AccessToken}
+     * Sets the User id of this {@link AccessToken}
      *
      * @param userId
-     *            The {@link User} id to set.
+     *            The User id to set.
      * @since 1.0.0
      */
     public void setUserId(KapuaId userId);

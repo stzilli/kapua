@@ -18,10 +18,9 @@ import org.eclipse.kapua.service.KapuaUpdatableEntityService;
 import org.eclipse.kapua.service.authentication.AuthenticationService;
 
 /**
- * Access token service API
+ * {@link AccessTokenService} service API definition.
  * 
- * @since 1.0
- *
+ * @since 1.0.0
  */
 public interface AccessTokenService extends KapuaEntityService<AccessToken, AccessTokenCreator>, KapuaUpdatableEntityService<AccessToken> {
 
@@ -29,11 +28,13 @@ public interface AccessTokenService extends KapuaEntityService<AccessToken, Acce
      * Find all access token associated with the given userId.
      * 
      * @param scopeId
+     *            The scopeId in which to search the scopeId.
      * @param userId
-     * @return
+     *            The User {@link KapuaId} for which to search a
+     * @return The {@link AccessTokenListResult} found.
      * @throws KapuaException
      * 
-     * @since 1.0
+     * @since 1.0.0
      */
     public AccessTokenListResult findByUserId(KapuaId scopeId, KapuaId userId)
             throws KapuaException;
@@ -42,10 +43,11 @@ public interface AccessTokenService extends KapuaEntityService<AccessToken, Acce
      * Find the access token by the given tokenId.
      * 
      * @param tokenId
-     * @return
+     *            The {@link AccessToken#getTokenId()}
+     * @return The {@link AccessToken} found, or {@code null} if not found.
      * @throws KapuaException
      * 
-     * @since 1.0
+     * @since 1.0.0
      */
     public AccessToken findByTokenId(String tokenId)
             throws KapuaException;
@@ -59,7 +61,7 @@ public interface AccessTokenService extends KapuaEntityService<AccessToken, Acce
      * @param id
      *            The {@link KapuaId} of the {@link AccessToken} to delete.
      * 
-     * @since 1.0
+     * @since 1.0.0
      */
     public void invalidate(KapuaId scopeId, KapuaId id) throws KapuaException;
 }

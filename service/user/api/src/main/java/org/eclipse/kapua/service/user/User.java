@@ -113,6 +113,9 @@ public interface User extends KapuaNamedEntity {
 
     /**
      * Set the user type
+     *
+     * @param userType
+     *            The {@link UserType} to set.
      */
     public void setUserType(UserType userType);
 

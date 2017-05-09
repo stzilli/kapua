@@ -26,12 +26,14 @@ import org.eclipse.kapua.model.KapuaNamedEntityCreator;
  */
 @XmlRootElement(name = "userCreator")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "displayName",
+@XmlType(propOrder = { //
+        "displayName",
         "email",
         "phoneNumber",
         "userType",
-        "externalId" },
-        factoryClass = UserXmlRegistry.class,
+        "externalId" //
+}, //
+        factoryClass = UserXmlRegistry.class, //
         factoryMethod = "newUserCreator")
 public interface UserCreator extends KapuaNamedEntityCreator<User> {
 
@@ -92,6 +94,7 @@ public interface UserCreator extends KapuaNamedEntityCreator<User> {
      * Set the user type
      *
      * @param userType
+     *            The {@link UserType}.
      */
     public void setUserType(UserType userType);
 

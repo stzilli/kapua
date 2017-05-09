@@ -22,7 +22,6 @@ import org.eclipse.kapua.service.config.KapuaConfigurableService;
  * {@link Role} service definition.
  * 
  * @since 1.0.0
- *
  */
 public interface RoleService extends KapuaEntityService<Role, RoleCreator>,
         KapuaUpdatableEntityService<Role>,
@@ -42,7 +41,7 @@ public interface RoleService extends KapuaEntityService<Role, RoleCreator>,
 
     /**
      * Updates the {@link Role} according the given updated entity.<br>
-     * The {@link Role#getName()} can be updated, but must remain unique within the scope.<br>
+     * The {@link Role#getName()} can be updated, but must remain unique within the scope.
      * 
      * @param role
      *            The updated {@link Role}.

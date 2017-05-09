@@ -45,18 +45,20 @@ public interface AccessInfo extends KapuaUpdatableEntity {
     }
 
     /**
-     * Sets the user id.
+     * Sets the User id.
      * 
      * @param userId
-     *            The user id.
+     *            The User id.
+     * 
      * @since 1.0.0
      */
     public void setUserId(KapuaId userId);
 
     /**
-     * Gets the user id.
+     * Gets the User id.
      * 
-     * @return The user id.
+     * @return The User id.
+     * 
      * @since 1.0.0
      */
     @XmlElement(name = "userId")

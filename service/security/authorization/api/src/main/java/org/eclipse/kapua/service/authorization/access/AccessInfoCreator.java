@@ -31,17 +31,19 @@ import org.eclipse.kapua.service.user.User;
 
 /**
  * {@link AccessInfo} creator definition.<br>
- * It is used to assign a set of {@link Domain}s and {@link Permission}s to the referenced {@link User}.<br>
+ * It is used to assign a set of {@link Domain}s and {@link Permission}s to the referenced User.<br>
  * 
  * @since 1.0.0
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "userId",
-                       "roleIds",
-                       "permissions" },
-         factoryClass = AccessInfoXmlRegistry.class, 
-         factoryMethod = "newAccessInfoCreator")
+@XmlType(propOrder = { //
+        "userId", //
+        "roleIds", //
+        "permissions" //
+}, //
+        factoryClass = AccessInfoXmlRegistry.class, //
+        factoryMethod = "newAccessInfoCreator")
 public interface AccessInfoCreator extends KapuaEntityCreator<AccessInfo> {
 
     /**

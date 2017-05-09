@@ -78,7 +78,8 @@ public class DeviceDAO extends ServiceDAO {
      * @param em
      * @param device
      * @return
-     * @throws KapuaEntityNotFoundException If {@link Device} is not found.
+     * @throws KapuaEntityNotFoundException
+     *             If {@link Device} is not found.
      */
     public static Device update(EntityManager em, Device device) throws KapuaEntityNotFoundException {
         DeviceImpl deviceImpl = (DeviceImpl) device;
@@ -165,7 +166,8 @@ public class DeviceDAO extends ServiceDAO {
      *
      * @param em
      * @param deviceId
-     * @throws KapuaEntityNotFoundException If {@link Device} is not found.
+     * @throws KapuaEntityNotFoundException
+     *             If {@link Device} is not found.
      */
     public static void delete(EntityManager em, KapuaId deviceId) throws KapuaEntityNotFoundException {
         ServiceDAO.delete(em, DeviceImpl.class, deviceId);

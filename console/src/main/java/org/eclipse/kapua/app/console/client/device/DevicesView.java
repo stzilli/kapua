@@ -15,9 +15,14 @@ import org.eclipse.kapua.app.console.client.messages.ConsoleMessages;
 import org.eclipse.kapua.app.console.client.resources.icons.IconSet;
 import org.eclipse.kapua.app.console.client.resources.icons.KapuaIcon;
 import org.eclipse.kapua.app.console.client.ui.tab.TabItem;
+import org.eclipse.kapua.app.console.client.util.FailureHandler;
+import org.eclipse.kapua.app.console.setting.ConsoleSetting;
+import org.eclipse.kapua.app.console.setting.ConsoleSettingKeys;
 import org.eclipse.kapua.app.console.shared.model.GwtDevice;
 import org.eclipse.kapua.app.console.shared.model.GwtDeviceQueryPredicates;
 import org.eclipse.kapua.app.console.shared.model.GwtSession;
+import org.eclipse.kapua.app.console.shared.service.GwtDeviceService;
+import org.eclipse.kapua.app.console.shared.service.GwtDeviceServiceAsync;
 
 import com.extjs.gxt.ui.client.Style.LayoutRegion;
 import com.extjs.gxt.ui.client.event.ComponentEvent;
@@ -32,6 +37,7 @@ import com.extjs.gxt.ui.client.widget.layout.BorderLayoutData;
 import com.extjs.gxt.ui.client.widget.layout.FitLayout;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class DevicesView extends LayoutContainer {
 
@@ -47,6 +53,8 @@ public class DevicesView extends LayoutContainer {
     private DevicesMap m_deviceMap;
     private DeviceTabs m_deviceTabs;
 
+    private static final GwtDeviceServiceAsync gwtDeviceService = GWT.create(GwtDeviceService.class);
+    
     public DevicesView(GwtSession currentSession) {
         m_currentSession = currentSession;
     }
@@ -60,7 +68,6 @@ public class DevicesView extends LayoutContainer {
     }
 
     protected void onRender(final Element parent, int index) {
-
         super.onRender(parent, index);
 
         // FitLayout that expands to the whole screen
@@ -101,8 +108,7 @@ public class DevicesView extends LayoutContainer {
         // North Panel: Devices Table and Map Tabs
         m_deviceTable = new DevicesTable(this, m_currentSession, panel);
         m_deviceFilterPanel.setDeviceTable(m_deviceTable);
-        m_deviceMap = new DevicesMap(this, m_currentSession);
-
+        
         m_tabsPanel = new TabPanel();
         m_tabsPanel.setPlain(false);
         m_tabsPanel.setBorders(false);
@@ -119,20 +125,36 @@ public class DevicesView extends LayoutContainer {
         m_tabTable.setLayout(new FitLayout());
         m_tabTable.add(m_deviceTable);
         m_tabsPanel.add(m_tabTable);
+        
+        gwtDeviceService.isMapEnabled(new AsyncCallback<Boolean>() {
 
-        m_tabMap = new TabItem(MSGS.tabMap(), new KapuaIcon(IconSet.MAP_O));
-        m_tabMap.setBorders(false);
-        m_tabMap.addListener(Events.Select, new Listener<ComponentEvent>() {
-
-            public void handleEvent(ComponentEvent be) {
-                m_deviceMap.refresh(new GwtDeviceQueryPredicates());
+            @Override
+            public void onFailure(Throwable caught) {
+                FailureHandler.handle(caught);
             }
+
+            @Override
+            public void onSuccess(Boolean result) {
+                if (result) {
+                    m_deviceMap = new DevicesMap(DevicesView.this, m_currentSession);
+            
+                    m_tabMap = new TabItem(MSGS.tabMap(), new KapuaIcon(IconSet.MAP_O));
+                    m_tabMap.setBorders(false);
+                    m_tabMap.addListener(Events.Select, new Listener<ComponentEvent>() {
+            
+                        public void handleEvent(ComponentEvent be) {
+                            m_deviceMap.refresh(new GwtDeviceQueryPredicates());
+                        }
+                    });
+                    m_tabMap.setLayout(new FitLayout());
+                    m_tabMap.add(m_deviceMap);
+            
+                    m_tabsPanel.add(m_tabMap);
+                }
+            }
+            
         });
-        m_tabMap.setLayout(new FitLayout());
-        m_tabMap.add(m_deviceMap);
-
-        m_tabsPanel.add(m_tabMap);
-
+        
         BorderLayoutData northData = new BorderLayoutData(LayoutRegion.NORTH, .45F);
         northData.setMargins(new Margins(0, 0, 0, 0));
         northData.setSplit(true);

@@ -25,6 +25,7 @@ public enum ConsoleSettingKeys implements SettingKey {
 
     DEVICE_CONFIGURATION_SERVICE_IGNORE("device.configuration.service.ignore"),//
 
+    DEVICE_MAP_ENABLED("device.map.enabled"), //
     DEVICE_MAP_TILE_URI("device.map.tile.uri"), //
 
     FILE_UPLOAD_SIZE_MAX("file.upload.size.max"), //

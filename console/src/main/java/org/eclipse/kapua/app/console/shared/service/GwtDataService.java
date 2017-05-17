@@ -28,12 +28,10 @@ import com.extjs.gxt.ui.client.data.ListLoadResult;
 import com.extjs.gxt.ui.client.data.LoadConfig;
 import com.extjs.gxt.ui.client.data.PagingLoadConfig;
 import com.extjs.gxt.ui.client.data.PagingLoadResult;
-import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
-
 @RemoteServiceRelativePath("data")
-public interface GwtDataService extends RemoteService {
+public interface GwtDataService extends KapuaConfigurableRemoteService {
 
     /**
      * Return the Topics for a given account; the returned structure is ready to
@@ -47,7 +45,6 @@ public interface GwtDataService extends RemoteService {
 
     PagingLoadResult<GwtTopic> findTopicsList(PagingLoadConfig config, GwtDataChannelInfoQuery query) throws GwtKapuaException;
 
-
     /**
      *
      * @param config
@@ -56,7 +53,6 @@ public interface GwtDataService extends RemoteService {
      * @throws GwtKapuaException
      */
     public ListLoadResult<GwtDatastoreDevice> findDevices(LoadConfig config, String accountName) throws GwtKapuaException;
-
 
     /**
      * Return the Headers for a given account/topic pair.
@@ -82,7 +78,6 @@ public interface GwtDataService extends RemoteService {
      */
     public ListLoadResult<GwtHeader> findNumberHeaders(LoadConfig config, String accountName, GwtTopic topic) throws GwtKapuaException;
 
-
     /**
      * Return the Headers for a given account/topic pair.
      * The returned structure is ready to be fed into the Grid UI widget through a loader.
@@ -95,8 +90,8 @@ public interface GwtDataService extends RemoteService {
      */
     public ListLoadResult<GwtHeader> findHeaders(LoadConfig config, String accountName, GwtDatastoreDevice device) throws GwtKapuaException;
 
-
-    public PagingLoadResult<GwtMessage> findMessagesByTopic(PagingLoadConfig loadConfig, String accountName, GwtTopic topic, List<GwtHeader> headers, Date startDate, Date endDate) throws GwtKapuaException;
+    public PagingLoadResult<GwtMessage> findMessagesByTopic(PagingLoadConfig loadConfig, String accountName, GwtTopic topic, List<GwtHeader> headers, Date startDate, Date endDate)
+            throws GwtKapuaException;
 
     public List<GwtMessage> findLastMessageByTopic(String accountName, int limit) throws GwtKapuaException;
 
@@ -105,7 +100,8 @@ public interface GwtDataService extends RemoteService {
     public GwtKapuaChartResult findMessagesByTopic(String accountName, GwtTopic topic,
             List<GwtHeader> headers, Date startDate, Date endDate, Stack<KapuaBasePagingCursor> cursors, int limit, int lastOffset, Integer indexOffset) throws GwtKapuaException;
 
-    public PagingLoadResult<GwtMessage> findMessagesByDevice(PagingLoadConfig loadConfig, String accountName, GwtDatastoreDevice device, List<GwtHeader> headers, Date startDate, Date endDate) throws GwtKapuaException;
+    public PagingLoadResult<GwtMessage> findMessagesByDevice(PagingLoadConfig loadConfig, String accountName, GwtDatastoreDevice device, List<GwtHeader> headers, Date startDate, Date endDate)
+            throws GwtKapuaException;
 
     public GwtKapuaChartResult findMessagesByDevice(String accountName, GwtDatastoreDevice device,
             List<GwtHeader> headers, Date startDate, Date endDate, Stack<KapuaBasePagingCursor> cursors, int limit, int lastOffset, Integer indexOffset) throws GwtKapuaException;

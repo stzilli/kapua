@@ -238,9 +238,9 @@ objects:
               port: 5672
           env:
           - name: ARTEMIS_CONFIGURATION
-            value: /run/secrets
+            value: /docker/secrets
           volumeMounts:
-          - mountPath: /run/secrets
+          - mountPath: /docker/secrets
             name: config
           - mountPath: /maven/data
             name: events-broker-volume-1
